@@ -1,0 +1,28 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icon/book.png</file>
+        <file>icon/check-mark.ico</file>
+        <file>icon/disk.ico</file>
+        <file>icon/face02.ico</file>
+        <file>icon/face03.ico</file>
+        <file>icon/face04.ico</file>
+        <file>icon/face05.ico</file>
+        <file>icon/head.jpg</file>
+        <file>icon/head1.jpg</file>
+        <file>icon/head2.jpg</file>
+        <file>icon/head3.jpg</file>
+        <file>icon/head4.jpg</file>
+        <file>icon/head5.jpg</file>
+        <file>icon/le.png</file>
+        <file>icon/money-box.png</file>
+        <file>icon/point06.ico</file>
+        <file>icon/point07.ico</file>
+        <file>icon/rewards.ico</file>
+        <file>icon/sechedule1.ico</file>
+        <file>icon/sun.ico</file>
+        <file>icon/tool.png</file>
+        <file>icon/trash.ico</file>
+        <file>icon/watch.ico</file>
+        <file>style/qss.qss</file>
+    </qresource>
+</RCC>
