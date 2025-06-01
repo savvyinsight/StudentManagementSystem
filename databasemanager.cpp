@@ -12,10 +12,10 @@ bool DataBaseManager::openDatabase(const QString &path)
 
     db.setDatabaseName(path);
     if (db.open()){
-        qDebug()<<tr("Can't open Database：")<<db.lastError().text();
+        qDebug()<<"Can't open Database："<<db.lastError().text();
         return false;
     }
-    qDebug()<<tr("Data base open seccessful!");
+    qDebug()<<"Data base open seccessful!";
     return true;
 }
 

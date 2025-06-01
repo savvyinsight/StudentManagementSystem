@@ -16,7 +16,7 @@ public:
 private:
     explicit DataBaseManager(QObject *parent = nullptr);
     QSqlDatabase db;
-    QString dbPath = ":/sqllite/mydatabase.db";
+    QString dbPath = "D:/project/QTProject/StudentManagementSystem/sqllite/mydatabase.db";
 
 signals:
 };
