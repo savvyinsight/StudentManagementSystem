@@ -24,5 +24,6 @@
         <file>icon/trash.ico</file>
         <file>icon/watch.ico</file>
         <file>style/qss.qss</file>
+        <file>sqllite/mydatabase.db</file>
     </qresource>
 </RCC>

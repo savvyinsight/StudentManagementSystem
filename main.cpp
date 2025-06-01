@@ -1,12 +1,14 @@
 #include "mainwindow.h"
+#include "databasemanager.h"
 #include <QApplication>
 #include <QFile>
 #include <QTextStream>
 #include <QDebug>
-
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+
+    DataBaseManager::instance();
 
     // use and load qss file
     QFile styleFile(":/style/qss.qss");

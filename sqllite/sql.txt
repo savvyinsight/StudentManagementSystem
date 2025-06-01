@@ -1,0 +1,45 @@
+-- Student information table
+CREATE TABLE studentInfo (
+    id TEXT PRIMARY KEY,               -- Student ID (string format)
+    name TEXT NOT NULL,                -- Full name
+    gender TEXT,                       -- Gender
+    birthday TEXT,                     -- Date of birth (YYYY-MM-DD)
+    join_date TEXT,                    -- Enrollment date (YYYY-MM-DD)
+    study_goal TEXT,                   -- Learning objectives
+    progress TEXT,                     -- Current progress status
+    photo BLOB                         -- Profile photo (binary)
+);
+
+-- Class schedule table
+CREATE TABLE schedule (
+    date TEXT,                         -- Schedule date (YYYY-MM-DD)
+    time TEXT,                         -- Class time (HH:MM)
+    course_name TEXT,                  -- Course name
+    PRIMARY KEY (date, time)           -- Composite primary key
+);
+
+-- Financial records table
+CREATE TABLE financialRecords (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    student_id TEXT NOT NULL,          -- Reference to studentInfo.id
+    payment_date TEXT NOT NULL,        -- Payment date (YYYY-MM-DD)
+    amount DECIMAL(10,2) NOT NULL,     -- Payment amount
+    payment_type TEXT NOT NULL,        -- e.g., "Cash", "Credit Card"
+    notes TEXT,                        -- Additional notes
+    FOREIGN KEY (student_id) REFERENCES studentInfo(id)
+);
+
+-- Honor wall (achievements display)
+CREATE TABLE honorWall (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    image_data BLOB NOT NULL,          -- Achievement image (binary)
+    description TEXT,                  -- Achievement description
+    added_date TEXT DEFAULT CURRENT_TIMESTAMP  -- Auto-filled timestamp
+);
+
+-- User accounts (for system access)
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT NOT NULL UNIQUE,     -- Login username
+    password TEXT NOT NULL             -- Login password (store hashed only)
+);
