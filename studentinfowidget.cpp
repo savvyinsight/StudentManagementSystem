@@ -13,12 +13,37 @@
 #include <QBuffer>
 #include <QMessageBox>
 #include <QSqlError>
+#include "tabledelegates.h"
+#include <QTableWidgetItem>
 StudentInfoWidget::StudentInfoWidget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::StudentInfoWidget)
 {
     ui->setupUi(this);
     ui->tableWidget->verticalHeader()->setDefaultSectionSize(100);
+    ui->tableWidget->setAlternatingRowColors(true);
+
+
+    //delegate gender column
+    ComBoxDelegate *genderDelegate = new ComBoxDelegate(this);
+    genderDelegate->setItems(QStringList()<<tr("Man")<<tr("Female"));
+    ui->tableWidget->setItemDelegateForColumn(2,genderDelegate);
+
+    //delegate progress column
+    ComBoxDelegate *progressDelegate = new ComBoxDelegate(this);
+    progressDelegate->setItems(QStringList()<<"0%"<<"20%"<<"40%"<<"60%"<<"80"<<"100%");
+    ui->tableWidget->setItemDelegateForColumn(6,progressDelegate);
+
+    //delegate date column
+    ui->tableWidget->setItemDelegateForColumn(3,new DateEditDelegate(this));
+    ui->tableWidget->setItemDelegateForColumn(4,new DateEditDelegate(this));
+
+    //delegate photo column
+    ui->tableWidget->setItemDelegateForColumn(7,new ImageDelegate(this));
+
+    //item changed signal
+    connect(ui->tableWidget,&QTableWidget::itemChanged,this,&StudentInfoWidget::handleItemChanged);
+
     refreshTable();
 }
 
@@ -240,5 +265,120 @@ void StudentInfoWidget::on_btnAddStudent_clicked()
 
     //run dialog
     if(dialog.exec() == QDialog::Accepted) handleDialogAccepted(formGroup,photoGroup);
+}
+
+
+void StudentInfoWidget::on_btnDelStudent_clicked()
+{
+    auto selected = ui->tableWidget->selectionModel()->selectedRows();
+    if(selected.isEmpty())
+    {
+        QMessageBox::warning(this,"Warning","Please select the row you want to delete!");
+        return;
+    }
+    QSqlDatabase::database().transaction();
+    foreach (const QModelIndex &index, selected) {
+        QString id = ui->tableWidget->item(index.row(),0)->text();
+        QSqlQuery query;
+        query.prepare("DELETE FROM studentInfo WHERE id = ?");
+        query.addBindValue(id);
+        if(!query.exec())
+        {
+            QSqlDatabase::database().rollback();
+            QMessageBox::critical(this,"Error","Delete Failed: "+query.lastError().text());
+            return;
+        }
+    }
+    QSqlDatabase::database().commit();
+    refreshTable();
+}
+
+
+void StudentInfoWidget::on_btnDelItem_clicked()
+{
+    auto selected = ui->tableWidget->selectedItems();
+    if(selected.isEmpty())
+    {
+        QMessageBox::warning(this,"Warning","Please select the cell you want to delete first!");
+        return;
+    }
+
+    QSqlDatabase::database().transaction();
+    foreach (QTableWidgetItem *item, selected) {
+        int row = item->row();
+        int col = item->column();
+        QString id = ui->tableWidget->item(row,0)->text();
+
+        const QStringList columns = {"id","name","gender","birthday","join_date",
+                                     "study_goal","progress","photo"};
+
+        QSqlQuery query;
+        query.prepare(QString("UPDATE studentInfo SET %1 = ? WHERE id= ?").arg(columns[col]));
+
+        query.addBindValue("");
+        query.addBindValue(id);
+
+        if(!query.exec())
+        {
+            QSqlDatabase::database().rollback();
+            QMessageBox::critical(this,"Error","Update Failed: "+query.lastError().text());
+            return;
+        }
+
+        QSqlDatabase::database().commit();
+        refreshTable();
+    }
+}
+
+void StudentInfoWidget::handleItemChanged(QTableWidgetItem* item)
+{
+    // Get the modified item's position
+    const int row = item->row();
+    const int col = item->column();
+
+    // If trying to modify the ID column (column 0), restore original value and show warning
+    if (col == 0) {
+        QMessageBox::warning(this, "Warning", "Student ID is the primary key and cannot be modified!");
+        refreshTable();
+        return;
+    }
+
+    const QString originalId = ui->tableWidget->item(row, 0)->text(); // Original student ID
+    const QString columnName = QStringList{ "id", "name", "gender", "birthday",
+                                           "join_date", "study_goal", "progress", "photo" }[col];
+
+    // Start database transaction
+    QSqlDatabase::database().transaction();
+    try {
+        // Prepare update statement
+        QSqlQuery updateQuery;
+        updateQuery.prepare(QString("UPDATE studentInfo SET %1 = ? WHERE id = ?").arg(columnName));
+
+        // Bind data
+        if (col == columnName.size()-1) { // Handle photo column
+            updateQuery.addBindValue(item->data(Qt::UserRole).toByteArray());
+        }
+        else {
+            updateQuery.addBindValue(item->text().trimmed());
+        }
+
+        updateQuery.addBindValue(originalId);
+
+        // Execute update
+        if (!updateQuery.exec()) {
+            throw std::runtime_error("Update failed: " + updateQuery.lastError().text().toStdString());
+        }
+
+        // Commit transaction if successful
+        QSqlDatabase::database().commit();
+    }
+    catch (const std::exception& e) {
+        // Rollback transaction on error
+        QSqlDatabase::database().rollback();
+        // Refresh table to restore original data
+        refreshTable();
+        // Show error message
+        QMessageBox::critical(this, "Operation Failed", QString::fromUtf8(e.what()));
+    }
 }
 

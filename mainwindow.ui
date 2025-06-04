@@ -194,24 +194,10 @@
        </size>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>1</number>
       </property>
       <widget class="StudentInfoWidget" name="pageStudentinfo"/>
-      <widget class="QWidget" name="pageSechedule">
-       <widget class="QPushButton" name="pushButton_2">
-        <property name="geometry">
-         <rect>
-          <x>90</x>
-          <y>140</y>
-          <width>75</width>
-          <height>24</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>1</string>
-        </property>
-       </widget>
-      </widget>
+      <widget class="ScheduleWidget" name="pageSechedule"/>
       <widget class="QWidget" name="pageHonor">
        <widget class="QPushButton" name="pushButton_3">
         <property name="geometry">
@@ -327,6 +313,12 @@
    <class>StudentInfoWidget</class>
    <extends>QWidget</extends>
    <header location="global">studentinfowidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ScheduleWidget</class>
+   <extends>QWidget</extends>
+   <header location="global">schedulewidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

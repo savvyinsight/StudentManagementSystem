@@ -6,7 +6,10 @@
 namespace Ui {
 class StudentInfoWidget;
 }
+
+class QTableWidgetItem;
 class QGroupBox;
+
 class StudentInfoWidget : public QWidget
 {
     Q_OBJECT
@@ -18,6 +21,10 @@ public:
 private slots:
     void on_btnAddStudent_clicked();
 
+    void on_btnDelStudent_clicked();
+
+    void on_btnDelItem_clicked();
+    void handleItemChanged(QTableWidgetItem* item);
 private:
     void refreshTable();
     QGroupBox* createFormGroup();

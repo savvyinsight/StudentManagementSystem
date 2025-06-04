@@ -25,6 +25,7 @@
 #include <QtWidgets/QToolButton>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
+#include <schedulewidget.h>
 #include <studentinfowidget.h>
 
 QT_BEGIN_NAMESPACE
@@ -44,8 +45,7 @@ public:
     QSpacerItem *verticalSpacer;
     QStackedWidget *stackedWidget;
     StudentInfoWidget *pageStudentinfo;
-    QWidget *pageSechedule;
-    QPushButton *pushButton_2;
+    ScheduleWidget *pageSechedule;
     QWidget *pageHonor;
     QPushButton *pushButton_3;
     QWidget *pageFinance;
@@ -149,11 +149,8 @@ public:
         pageStudentinfo = new StudentInfoWidget();
         pageStudentinfo->setObjectName("pageStudentinfo");
         stackedWidget->addWidget(pageStudentinfo);
-        pageSechedule = new QWidget();
+        pageSechedule = new ScheduleWidget();
         pageSechedule->setObjectName("pageSechedule");
-        pushButton_2 = new QPushButton(pageSechedule);
-        pushButton_2->setObjectName("pushButton_2");
-        pushButton_2->setGeometry(QRect(90, 140, 75, 24));
         stackedWidget->addWidget(pageSechedule);
         pageHonor = new QWidget();
         pageHonor->setObjectName("pageHonor");
@@ -221,7 +218,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(3);
+        stackedWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -235,7 +232,6 @@ public:
         btnFinance->setText(QCoreApplication::translate("MainWindow", "Finance", nullptr));
         btnHonorWall->setText(QCoreApplication::translate("MainWindow", "Honor Wall", nullptr));
         btnSystemset->setText(QCoreApplication::translate("MainWindow", "System Setting", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("MainWindow", "1", nullptr));
         pushButton_3->setText(QCoreApplication::translate("MainWindow", "2", nullptr));
         pushButton_4->setText(QCoreApplication::translate("MainWindow", "3", nullptr));
         idLabel->setText(QCoreApplication::translate("MainWindow", "id", nullptr));
