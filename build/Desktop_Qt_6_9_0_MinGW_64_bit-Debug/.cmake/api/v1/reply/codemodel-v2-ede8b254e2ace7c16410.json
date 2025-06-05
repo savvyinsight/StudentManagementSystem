@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-487e6b7a0d1b6fc4c4bf.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "StudentManagementSystem",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "StudentManagementSystem::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-StudentManagementSystem-Debug-eac37990ea3d65ad9ca9.json",
+					"name" : "StudentManagementSystem",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "StudentManagementSystem_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-StudentManagementSystem_autogen-Debug-dab19a93c4d36a8d4815.json",
+					"name" : "StudentManagementSystem_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "StudentManagementSystem_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-StudentManagementSystem_autogen_timestamp_deps-Debug-f64a31542079aa41c5f8.json",
+					"name" : "StudentManagementSystem_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/project/QTProject/StudentManagementSystem/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug",
+		"source" : "D:/project/QTProject/StudentManagementSystem"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

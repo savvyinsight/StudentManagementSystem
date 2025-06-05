@@ -122,8 +122,8 @@ void ScheduleWidget::setupUI() {
             this, &ScheduleWidget::loadSchedule);
     connect(addButton, &QPushButton::clicked, this, &ScheduleWidget::addCourse);
     connect(deleteButton, &QPushButton::clicked, this, &ScheduleWidget::deleteCourse);
-    // connect(prevWeekBtn, &QPushButton::clicked, this, &ScheduleWidget::showPreviousWeek);
-    // connect(nextWeekBtn, &QPushButton::clicked, this, &ScheduleWidget::showNextWeek);
+    connect(prevWeekBtn, &QPushButton::clicked, this, &ScheduleWidget::showPreviousWeek);
+    connect(nextWeekBtn, &QPushButton::clicked, this, &ScheduleWidget::showNextWeek);
     connect(tableWidget, &QTableWidget::itemChanged, this, &ScheduleWidget::handleItemChanged);
 }
 
@@ -435,4 +435,48 @@ void ScheduleWidget::deleteCourse()
         }
     }
 }
+
+
+void ScheduleWidget::showPreviousWeek()
+{
+    int currentWeek = weekComboBox->currentIndex();
+    int currentYear = yearComboBox->currentIndex();
+
+    // If not the first week of the year, just go to previous week
+    if (currentWeek > 0) {
+        weekComboBox->setCurrentIndex(currentWeek - 1);
+    }
+    else {
+        // If it's the first week, go to last week of previous year
+        if (yearComboBox->currentIndex() > 0) {
+            yearComboBox->setCurrentIndex(currentYear - 1);
+            // Jump to last week (week 51) of the previous year
+            weekComboBox->setCurrentIndex(51);
+        }
+        // Else: already at earliest year/week, do nothing
+    }
+}
+
+void ScheduleWidget::showNextWeek()
+{
+    int currentWeek = weekComboBox->currentIndex();
+    int currentYear = yearComboBox->currentIndex();
+
+    // If not the last week of the year, just go to next week
+    if (currentWeek < 51) {
+        weekComboBox->setCurrentIndex(currentWeek + 1);
+    }
+    else {
+        // If it's the last week, go to first week of next year
+        if (yearComboBox->currentIndex() < yearComboBox->count() - 1) {
+            yearComboBox->setCurrentIndex(currentYear + 1);
+            // Jump to first week (week 0) of the next year
+            weekComboBox->setCurrentIndex(0);
+        }
+        // Else: already at latest year/week, do nothing
+    }
+}
+
+
+
 

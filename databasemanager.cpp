@@ -1,6 +1,20 @@
 #include "databasemanager.h"
 
 #include<QSqlError>
+
+DataBaseManager::DataBaseManager(QObject *parent)
+    : QObject{parent}
+{
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    openDatabase(dbPath);
+}
+
+
+DataBaseManager::~DataBaseManager()
+{
+    closeDatabase();
+}
+
 DataBaseManager &DataBaseManager::instance()
 {
     static DataBaseManager instance;
@@ -38,16 +52,4 @@ void DataBaseManager::setDatabasePath(const QString &path)
         closeDatabase();
         openDatabase(path);
     }
-}
-
-DataBaseManager::~DataBaseManager()
-{
-    closeDatabase();
-}
-
-DataBaseManager::DataBaseManager(QObject *parent)
-    : QObject{parent}
-{
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    openDatabase(dbPath);
 }
