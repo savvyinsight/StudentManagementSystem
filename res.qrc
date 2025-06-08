@@ -25,5 +25,6 @@
         <file>icon/watch.ico</file>
         <file>style/qss.qss</file>
         <file>sqllite/mydatabase.db</file>
+        <file>style/modern.qss</file>
     </qresource>
 </RCC>

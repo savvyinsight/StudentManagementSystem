@@ -194,99 +194,12 @@
        </size>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>3</number>
       </property>
       <widget class="StudentInfoWidget" name="pageStudentinfo"/>
       <widget class="ScheduleWidget" name="pageSechedule"/>
-      <widget class="QWidget" name="pageHonor">
-       <widget class="QPushButton" name="pushButton_3">
-        <property name="geometry">
-         <rect>
-          <x>90</x>
-          <y>100</y>
-          <width>75</width>
-          <height>24</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>2</string>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="pageFinance">
-       <widget class="QPushButton" name="pushButton_4">
-        <property name="geometry">
-         <rect>
-          <x>60</x>
-          <y>70</y>
-          <width>75</width>
-          <height>24</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>3</string>
-        </property>
-       </widget>
-       <widget class="QWidget" name="formLayoutWidget">
-        <property name="geometry">
-         <rect>
-          <x>150</x>
-          <y>180</y>
-          <width>169</width>
-          <height>84</height>
-         </rect>
-        </property>
-        <layout class="QFormLayout" name="formLayout">
-         <item row="0" column="0">
-          <widget class="QLabel" name="idLabel">
-           <property name="text">
-            <string>id</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QLineEdit" name="idLineEdit"/>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="nameLabel">
-           <property name="text">
-            <string>name</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QLineEdit" name="nameLineEdit"/>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="dateLabel">
-           <property name="text">
-            <string>date</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QDateEdit" name="dateDateEdit">
-           <property name="maximumDateTime">
-            <datetime>
-             <hour>23</hour>
-             <minute>59</minute>
-             <second>59</second>
-             <year>9999</year>
-             <month>8</month>
-             <day>30</day>
-            </datetime>
-           </property>
-           <property name="displayFormat">
-            <string>yyyy/M/d</string>
-           </property>
-           <property name="calendarPopup">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </widget>
+      <widget class="FinancialWidget" name="pageFinance"/>
+      <widget class="QWidget" name="pageHonor"/>
       <widget class="QWidget" name="pageSystemsetting">
        <widget class="QPushButton" name="pushButton_5">
         <property name="geometry">
@@ -319,6 +232,12 @@
    <class>ScheduleWidget</class>
    <extends>QWidget</extends>
    <header location="global">schedulewidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>FinancialWidget</class>
+   <extends>QWidget</extends>
+   <header>financialwidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
