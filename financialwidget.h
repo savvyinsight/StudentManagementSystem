@@ -23,6 +23,8 @@ public:
 
 private:
     void setupUI();
+    void loadFinancialRecords();
+    void populateStudentComboBox();
     QChartView* pieChartView;
     QTableWidget* tableWidget;
     QComboBox* studentComboBox;

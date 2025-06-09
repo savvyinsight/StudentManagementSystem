@@ -3,7 +3,12 @@
 
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+
 // QChartView is not in core module, so we need to add it CMakeLists.txt
+// target_link_libraries(StudentManagementSystem PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt6::Sql Qt6::Charts)
+// find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets Sql Charts)
+// find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Sql Charts)
+
 #include <QChartView>
 #include <QLabel>
 #include <QComboBox>
@@ -11,12 +16,15 @@
 #include <QDateEdit>
 #include <QPushButton>
 #include <QTableWidget>
+#include <QSqlQuery>
+#include <QHeaderView>
 FinancialWidget::FinancialWidget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::FinancialWidget)
 {
     ui->setupUi(this);
     setupUI();
+    populateStudentComboBox();
 }
 
 FinancialWidget::~FinancialWidget()
@@ -29,19 +37,13 @@ FinancialWidget::~FinancialWidget()
 // It's responsible for creating and arranging various UI components.
 void FinancialWidget::setupUI()
 {
-    // Create a vertical layout for the main layout of the widget and set this widget as its parent.
+
     QVBoxLayout* mainLayout = new QVBoxLayout(this);
-    // Create a horizontal layout for the top section of the UI.
     QHBoxLayout* topLayout = new QHBoxLayout();
-    // Create a horizontal layout for the middle section of the UI.
     QHBoxLayout* middleLayout = new QHBoxLayout();
-    // Create a QChartView instance. This will be used to display a chart.
     chartView = new QChartView();
-    // Add the topLayout to the mainLayout.
     mainLayout->addLayout(topLayout);
-    // Add the middleLayout to the mainLayout and set its stretch factor to 60 (to occupy 60% of the available height).
     mainLayout->addLayout(middleLayout, 60);
-    // Add the chartView to the mainLayout and set its stretch factor to 40 (to occupy 40% of the available height).
     mainLayout->addWidget(chartView, 40);
 
     // ================= Top section for filter conditions and buttons layout =================
@@ -94,4 +96,52 @@ void FinancialWidget::setupUI()
     //         this, &FinancialWidget::loadFinancialRecords);
     // connect(startDateEdit, &QDateEdit::dateChanged, this, &FinancialWidget::loadFinancialRecords);
     // connect(endDateEdit, &QDateEdit::dateChanged, this, &FinancialWidget::loadFinancialRecords);
+}
+
+void FinancialWidget::loadFinancialRecords()
+{
+    tableWidget->setRowCount(0);
+
+    QString studentId = studentComboBox->currentData().toString();
+    QDate startDate = startDateEdit->date();
+    QDate endDate = endDateEdit->date();
+
+    QString queryStr = QString(
+                           "SELECT fr.id, s.name, fr.payment_date, fr.amount, fr.payment_type, fr.notes "
+                           "FROM financialRecords fr "
+                           "JOIN studentInfo s ON fr.student_id = s.id "
+                           "WHERE fr.payment_date BETWEEN '%1' AND '%2' %3"
+                           ).arg(startDate.toString("yyyy-MM-dd"),
+                                endDate.toString("yyyy-MM-dd"),
+                                (studentId != "-1") ? QString("AND fr.student_id = '%1'").arg(studentId) : "");
+
+    QSqlQuery query(queryStr);
+
+    while (query.next()) {
+        int row = tableWidget->rowCount();
+        tableWidget->insertRow(row);
+
+        for (int col = 0; col < 6; ++col) {
+            QTableWidgetItem* item = new QTableWidgetItem(query.value(col).toString());
+            item->setTextAlignment(Qt::AlignCenter);
+            tableWidget->setItem(row, col, item);
+        }
+    }
+
+    tableWidget->horizontalHeader()->setDefaultAlignment(Qt::AlignCenter);
+    // updateChart(); // Update the line chart below
+    // updatePieChart(); // Update the pie chart on the right
+}
+
+void FinancialWidget::populateStudentComboBox()
+{
+    studentComboBox->clear();
+    studentComboBox->addItem(tr("All Students"), QVariant("-1")); // "-1" represents all students
+
+    QSqlQuery query(tr("SELECT id, name FROM studentInfo"));
+    while (query.next()) {
+        QString id = query.value(0).toString(); // id is of QString type
+        QString name = query.value(1).toString();
+        studentComboBox->addItem(name, QVariant(id));
+    }
 }
