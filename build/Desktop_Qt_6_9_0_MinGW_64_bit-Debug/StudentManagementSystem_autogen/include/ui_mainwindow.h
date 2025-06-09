@@ -12,11 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QDateEdit>
-#include <QtWidgets/QFormLayout>
 #include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
@@ -27,6 +23,7 @@
 #include <QtWidgets/QWidget>
 #include <schedulewidget.h>
 #include <studentinfowidget.h>
+#include "financialwidget.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -46,18 +43,8 @@ public:
     QStackedWidget *stackedWidget;
     StudentInfoWidget *pageStudentinfo;
     ScheduleWidget *pageSechedule;
+    FinancialWidget *pageFinance;
     QWidget *pageHonor;
-    QPushButton *pushButton_3;
-    QWidget *pageFinance;
-    QPushButton *pushButton_4;
-    QWidget *formLayoutWidget;
-    QFormLayout *formLayout;
-    QLabel *idLabel;
-    QLineEdit *idLineEdit;
-    QLabel *nameLabel;
-    QLineEdit *nameLineEdit;
-    QLabel *dateLabel;
-    QDateEdit *dateDateEdit;
     QWidget *pageSystemsetting;
     QPushButton *pushButton_5;
     QStatusBar *statusbar;
@@ -152,56 +139,12 @@ public:
         pageSechedule = new ScheduleWidget();
         pageSechedule->setObjectName("pageSechedule");
         stackedWidget->addWidget(pageSechedule);
+        pageFinance = new FinancialWidget();
+        pageFinance->setObjectName("pageFinance");
+        stackedWidget->addWidget(pageFinance);
         pageHonor = new QWidget();
         pageHonor->setObjectName("pageHonor");
-        pushButton_3 = new QPushButton(pageHonor);
-        pushButton_3->setObjectName("pushButton_3");
-        pushButton_3->setGeometry(QRect(90, 100, 75, 24));
         stackedWidget->addWidget(pageHonor);
-        pageFinance = new QWidget();
-        pageFinance->setObjectName("pageFinance");
-        pushButton_4 = new QPushButton(pageFinance);
-        pushButton_4->setObjectName("pushButton_4");
-        pushButton_4->setGeometry(QRect(60, 70, 75, 24));
-        formLayoutWidget = new QWidget(pageFinance);
-        formLayoutWidget->setObjectName("formLayoutWidget");
-        formLayoutWidget->setGeometry(QRect(150, 180, 169, 84));
-        formLayout = new QFormLayout(formLayoutWidget);
-        formLayout->setObjectName("formLayout");
-        formLayout->setContentsMargins(0, 0, 0, 0);
-        idLabel = new QLabel(formLayoutWidget);
-        idLabel->setObjectName("idLabel");
-
-        formLayout->setWidget(0, QFormLayout::ItemRole::LabelRole, idLabel);
-
-        idLineEdit = new QLineEdit(formLayoutWidget);
-        idLineEdit->setObjectName("idLineEdit");
-
-        formLayout->setWidget(0, QFormLayout::ItemRole::FieldRole, idLineEdit);
-
-        nameLabel = new QLabel(formLayoutWidget);
-        nameLabel->setObjectName("nameLabel");
-
-        formLayout->setWidget(1, QFormLayout::ItemRole::LabelRole, nameLabel);
-
-        nameLineEdit = new QLineEdit(formLayoutWidget);
-        nameLineEdit->setObjectName("nameLineEdit");
-
-        formLayout->setWidget(1, QFormLayout::ItemRole::FieldRole, nameLineEdit);
-
-        dateLabel = new QLabel(formLayoutWidget);
-        dateLabel->setObjectName("dateLabel");
-
-        formLayout->setWidget(2, QFormLayout::ItemRole::LabelRole, dateLabel);
-
-        dateDateEdit = new QDateEdit(formLayoutWidget);
-        dateDateEdit->setObjectName("dateDateEdit");
-        dateDateEdit->setMaximumDateTime(QDateTime(QDate(9999, 8, 30), QTime(23, 59, 59)));
-        dateDateEdit->setCalendarPopup(true);
-
-        formLayout->setWidget(2, QFormLayout::ItemRole::FieldRole, dateDateEdit);
-
-        stackedWidget->addWidget(pageFinance);
         pageSystemsetting = new QWidget();
         pageSystemsetting->setObjectName("pageSystemsetting");
         pushButton_5 = new QPushButton(pageSystemsetting);
@@ -218,7 +161,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -232,12 +175,6 @@ public:
         btnFinance->setText(QCoreApplication::translate("MainWindow", "Finance", nullptr));
         btnHonorWall->setText(QCoreApplication::translate("MainWindow", "Honor Wall", nullptr));
         btnSystemset->setText(QCoreApplication::translate("MainWindow", "System Setting", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("MainWindow", "2", nullptr));
-        pushButton_4->setText(QCoreApplication::translate("MainWindow", "3", nullptr));
-        idLabel->setText(QCoreApplication::translate("MainWindow", "id", nullptr));
-        nameLabel->setText(QCoreApplication::translate("MainWindow", "name", nullptr));
-        dateLabel->setText(QCoreApplication::translate("MainWindow", "date", nullptr));
-        dateDateEdit->setDisplayFormat(QCoreApplication::translate("MainWindow", "yyyy/M/d", nullptr));
         pushButton_5->setText(QCoreApplication::translate("MainWindow", "4", nullptr));
     } // retranslateUi
 

@@ -275,6 +275,21 @@ StudentManagementSystem_autogen/timestamp: \
 	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6/QtPublicToolHelpers.cmake \
 	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6/QtPublicWalkLibsHelpers.cmake \
 	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6/QtPublicWindowsHelpers.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6Charts/Qt6ChartsAdditionalTargetInfo.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6Charts/Qt6ChartsConfig.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6Charts/Qt6ChartsConfigVersion.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6Charts/Qt6ChartsConfigVersionImpl.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6Charts/Qt6ChartsDependencies.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6Charts/Qt6ChartsTargets-relwithdebinfo.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6Charts/Qt6ChartsTargets.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6Charts/Qt6ChartsVersionlessAliasTargets.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6ChartsPrivate/Qt6ChartsPrivateAdditionalTargetInfo.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6ChartsPrivate/Qt6ChartsPrivateConfig.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6ChartsPrivate/Qt6ChartsPrivateConfigVersion.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6ChartsPrivate/Qt6ChartsPrivateConfigVersionImpl.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6ChartsPrivate/Qt6ChartsPrivateDependencies.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6ChartsPrivate/Qt6ChartsPrivateTargets.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6ChartsPrivate/Qt6ChartsPrivateVersionlessAliasTargets.cmake \
 	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6Core/Qt6CoreAdditionalTargetInfo.cmake \
 	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6Core/Qt6CoreConfig.cmake \
 	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6Core/Qt6CoreConfigExtras.cmake \
@@ -372,6 +387,36 @@ StudentManagementSystem_autogen/timestamp: \
 	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6GuiTools/Qt6GuiToolsTargets-relwithdebinfo.cmake \
 	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6GuiTools/Qt6GuiToolsTargets.cmake \
 	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6GuiTools/Qt6GuiToolsVersionlessTargets.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6OpenGL/Qt6OpenGLAdditionalTargetInfo.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6OpenGL/Qt6OpenGLConfig.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6OpenGL/Qt6OpenGLConfigVersion.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6OpenGL/Qt6OpenGLConfigVersionImpl.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6OpenGL/Qt6OpenGLDependencies.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6OpenGL/Qt6OpenGLTargets-relwithdebinfo.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6OpenGL/Qt6OpenGLTargets.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6OpenGL/Qt6OpenGLVersionlessAliasTargets.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6OpenGLPrivate/Qt6OpenGLPrivateAdditionalTargetInfo.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6OpenGLPrivate/Qt6OpenGLPrivateConfig.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6OpenGLPrivate/Qt6OpenGLPrivateConfigVersion.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6OpenGLPrivate/Qt6OpenGLPrivateConfigVersionImpl.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6OpenGLPrivate/Qt6OpenGLPrivateDependencies.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6OpenGLPrivate/Qt6OpenGLPrivateTargets.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6OpenGLPrivate/Qt6OpenGLPrivateVersionlessAliasTargets.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsAdditionalTargetInfo.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsConfig.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsConfigVersion.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsConfigVersionImpl.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsDependencies.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsTargets-relwithdebinfo.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsTargets.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsVersionlessAliasTargets.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6OpenGLWidgetsPrivate/Qt6OpenGLWidgetsPrivateAdditionalTargetInfo.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6OpenGLWidgetsPrivate/Qt6OpenGLWidgetsPrivateConfig.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6OpenGLWidgetsPrivate/Qt6OpenGLWidgetsPrivateConfigVersion.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6OpenGLWidgetsPrivate/Qt6OpenGLWidgetsPrivateConfigVersionImpl.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6OpenGLWidgetsPrivate/Qt6OpenGLWidgetsPrivateDependencies.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6OpenGLWidgetsPrivate/Qt6OpenGLWidgetsPrivateTargets.cmake \
+	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6OpenGLWidgetsPrivate/Qt6OpenGLWidgetsPrivateVersionlessAliasTargets.cmake \
 	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6Sql/Qt6QIBaseDriverPluginAdditionalTargetInfo.cmake \
 	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6Sql/Qt6QIBaseDriverPluginConfig.cmake \
 	D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6Sql/Qt6QIBaseDriverPluginTargets-relwithdebinfo.cmake \
@@ -728,6 +773,8 @@ StudentManagementSystem_autogen/timestamp: \
 	D:/project/QTProject/StudentManagementSystem/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/StudentManagementSystem_autogen/moc_predefs.h \
 	D:/project/QTProject/StudentManagementSystem/databasemanager.cpp \
 	D:/project/QTProject/StudentManagementSystem/databasemanager.h \
+	D:/project/QTProject/StudentManagementSystem/financialwidget.cpp \
+	D:/project/QTProject/StudentManagementSystem/financialwidget.h \
 	D:/project/QTProject/StudentManagementSystem/main.cpp \
 	D:/project/QTProject/StudentManagementSystem/mainwindow.cpp \
 	D:/project/QTProject/StudentManagementSystem/mainwindow.h \
@@ -737,6 +784,7 @@ StudentManagementSystem_autogen/timestamp: \
 	D:/project/QTProject/StudentManagementSystem/studentinfowidget.cpp \
 	D:/project/QTProject/StudentManagementSystem/studentinfowidget.h \
 	D:/project/QTProject/StudentManagementSystem/tabledelegates.h \
+	D:/project/QTProject/StudentManagementSystem/financialwidget.ui \
 	D:/project/QTProject/StudentManagementSystem/mainwindow.ui \
 	D:/project/QTProject/StudentManagementSystem/schedulewidget.ui \
 	D:/project/QTProject/StudentManagementSystem/studentinfowidget.ui \

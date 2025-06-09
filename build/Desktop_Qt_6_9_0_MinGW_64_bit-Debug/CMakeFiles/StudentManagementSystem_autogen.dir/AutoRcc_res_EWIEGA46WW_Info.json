@@ -33,7 +33,8 @@
 		"D:/project/QTProject/StudentManagementSystem/icon/head4.jpg",
 		"D:/project/QTProject/StudentManagementSystem/icon/tool.png",
 		"D:/project/QTProject/StudentManagementSystem/icon/point06.ico",
-		"D:/project/QTProject/StudentManagementSystem/style/qss.qss"
+		"D:/project/QTProject/StudentManagementSystem/style/qss.qss",
+		"D:/project/QTProject/StudentManagementSystem/style/modern.qss"
 	],
 	"LOCK_FILE" : "D:/project/QTProject/StudentManagementSystem/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/CMakeFiles/StudentManagementSystem_autogen.dir/AutoRcc_res_EWIEGA46WW_Lock.lock",
 	"MULTI_CONFIG" : false,

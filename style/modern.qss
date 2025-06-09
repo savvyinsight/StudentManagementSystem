@@ -1,0 +1,245 @@
+/* Modern Qt Widget Style Sheet */
+
+/* --------------- Global Styles --------------- */
+* {
+    font-family: "Segoe UI", "Roboto", "Ubuntu", sans-serif;
+    font-size: 14px;
+    color: #333;
+    outline: none;
+}
+
+QMainWindow, QWidget {
+    background-color: #f5f7fa;
+}
+
+/* --------------- Sidebar/Navigation --------------- */
+QWidget#sidebar {
+    background-color: #2c3e50;
+    border-radius: 0;
+}
+
+QWidget#sidebar QLabel {
+    color: #ecf0f1;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+QWidget#sidebar QPushButton {
+    background-color: transparent;
+    color: #bdc3c7;
+    border-radius: 0;
+    text-align: left;
+    padding: 10px 20px;
+    min-width: 150px;
+}
+
+QWidget#sidebar QPushButton:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+QWidget#sidebar QPushButton:pressed {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* --------------- Buttons --------------- */
+QPushButton {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    min-width: 80px;
+    transition: background-color 0.2s;
+}
+
+QPushButton:hover {
+    background-color: #2980b9;
+}
+
+QPushButton:pressed {
+    background-color: #1a5276;
+}
+
+QPushButton:disabled {
+    background-color: #bdc3c7;
+    color: #7f8c8d;
+}
+
+/* Add/Edit/Delete Buttons */
+QPushButton#addButton {
+    background-color: #2ecc71;
+}
+
+QPushButton#addButton:hover {
+    background-color: #27ae60;
+}
+
+QPushButton#deleteButton {
+    background-color: #e74c3c;
+}
+
+QPushButton#deleteButton:hover {
+    background-color: #c0392b;
+}
+
+QPushButton#editButton {
+    background-color: #f39c12;
+}
+
+QPushButton#editButton:hover {
+    background-color: #e67e22;
+}
+
+/* --------------- Tables --------------- */
+QTableWidget {
+    background-color: white;
+    gridline-color: #e5e5e5;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    selection-background-color: #3498db;
+    selection-color: white;
+}
+
+QTableWidget::item {
+    padding: 8px;
+}
+
+QTableWidget::item:selected {
+    background-color: #3498db;
+}
+
+QHeaderView::section {
+    background-color: #ecf0f1;
+    color: #2c3e50;
+    padding: 8px;
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
+    font-weight: 500;
+}
+
+QHeaderView::section:first {
+    border-top-left-radius: 4px;
+}
+
+QHeaderView::section:last {
+    border-top-right-radius: 4px;
+}
+
+/* --------------- Combo Boxes --------------- */
+QComboBox {
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+    padding: 6px 10px;
+    background-color: white;
+    combobox-popup: 0;
+}
+
+QComboBox:hover {
+    border-color: #3498db;
+}
+
+QComboBox::drop-down {
+    border: none;
+    background-color: transparent;
+}
+
+QComboBox::down-arrow {
+    image: url("qrc:/icons/arrow-down.png"); /* Replace with actual icon */
+    width: 12px;
+    height: 12px;
+}
+
+QComboBox QAbstractItemView {
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+    background-color: white;
+    padding: 4px;
+    selection-background-color: #3498db;
+    selection-color: white;
+}
+
+/* --------------- Date Edits --------------- */
+QDateEdit {
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+    padding: 6px 10px;
+    background-color: white;
+}
+
+QDateEdit:hover {
+    border-color: #3498db;
+}
+
+QDateEdit::drop-down {
+    border: none;
+    background-color: transparent;
+}
+
+QDateEdit::down-arrow {
+    image: url("qrc:/icons/calendar.png"); /* Replace with actual icon */
+    width: 12px;
+    height: 12px;
+}
+
+/* --------------- Charts --------------- */
+QChartView {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+}
+
+/* --------------- Scroll Bars --------------- */
+QScrollBar:vertical {
+    background: #f0f0f0;
+    width: 12px;
+    margin: 0;
+}
+
+QScrollBar::handle:vertical {
+    background: #bdc3c7;
+    min-height: 20px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #95a5a6;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0;
+}
+
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+QScrollBar:horizontal {
+    background: #f0f0f0;
+    height: 12px;
+    margin: 0;
+}
+
+QScrollBar::handle:horizontal {
+    background: #bdc3c7;
+    min-width: 20px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background: #95a5a6;
+}
+
+QScrollBar::add-line:horizontal,
+QScrollBar::sub-line:horizontal {
+    width: 0;
+}
+
+QScrollBar::add-page:horizontal,
+QScrollBar::sub-page:horizontal {
+    background: none;
+}
