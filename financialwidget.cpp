@@ -5,9 +5,9 @@
 #include <QHBoxLayout>
 
 // QChartView is not in core module, so we need to add it CMakeLists.txt
-// target_link_libraries(StudentManagementSystem PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt6::Sql Qt6::Charts)
 // find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets Sql Charts)
 // find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Sql Charts)
+// target_link_libraries(StudentManagementSystem PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt6::Sql Qt6::Charts)
 
 #include <QChartView>
 #include <QLabel>
@@ -18,6 +18,12 @@
 #include <QTableWidget>
 #include <QSqlQuery>
 #include <QHeaderView>
+#include <QDialog>
+#include <QFormLayout>
+#include <QLineEdit>
+#include <QDialogButtonBox>
+#include <QSqlError>
+
 FinancialWidget::FinancialWidget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::FinancialWidget)
@@ -89,13 +95,13 @@ void FinancialWidget::setupUI()
     chartView->setMinimumHeight(200); // Ensure minimum height
 
     // Connections
-    // connect(addButton, &QPushButton::clicked, this, &FinancialWidget::addRecord);
+    connect(addButton, &QPushButton::clicked, this, &FinancialWidget::addRecord);
     // connect(deleteButton, &QPushButton::clicked, this, &FinancialWidget::deleteRecord);
     // connect(editButton, &QPushButton::clicked, this, &FinancialWidget::editRecord);
     // connect(studentComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
     //         this, &FinancialWidget::loadFinancialRecords);
-    // connect(startDateEdit, &QDateEdit::dateChanged, this, &FinancialWidget::loadFinancialRecords);
-    // connect(endDateEdit, &QDateEdit::dateChanged, this, &FinancialWidget::loadFinancialRecords);
+    connect(startDateEdit, &QDateEdit::dateChanged, this, &FinancialWidget::loadFinancialRecords);
+    connect(endDateEdit, &QDateEdit::dateChanged, this, &FinancialWidget::loadFinancialRecords);
 }
 
 void FinancialWidget::loadFinancialRecords()
@@ -145,3 +151,68 @@ void FinancialWidget::populateStudentComboBox()
         studentComboBox->addItem(name, QVariant(id));
     }
 }
+
+void FinancialWidget::addRecord()
+{
+    QDialog dialog(this);
+    dialog.setWindowTitle("Add Payment Record");
+    QFormLayout form(&dialog);
+
+    // Student name combo box
+    QComboBox* studentNameComboBox = new QComboBox(&dialog);
+    QSqlQuery query("SELECT id, name FROM studentInfo");
+    while (query.next()) {
+        QString id = query.value(0).toString();
+        QString name = query.value(1).toString();
+        studentNameComboBox->addItem(name, QVariant(id)); // Associate student ID with name
+    }
+
+    QDateEdit* paymentDateEdit = new QDateEdit(&dialog);
+    paymentDateEdit->setDate(QDate::currentDate()); // Set default value to current date
+    paymentDateEdit->setCalendarPopup(true); // Allow calendar popup
+
+    QLineEdit* amountEdit = new QLineEdit(&dialog);
+    QLineEdit* feeTypeEdit = new QLineEdit(&dialog);
+    QLineEdit* remarkEdit = new QLineEdit(&dialog);
+
+    form.addRow("Student Name:", studentNameComboBox);
+    form.addRow("Payment Date:", paymentDateEdit);
+    form.addRow("Amount:", amountEdit);
+    form.addRow("Payment Type:", feeTypeEdit);
+    form.addRow("Remarks:", remarkEdit);
+
+    QDialogButtonBox buttonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, Qt::Horizontal, &dialog);
+    buttonBox.button(QDialogButtonBox::Ok)->setText("Confirm");
+    buttonBox.button(QDialogButtonBox::Cancel)->setText("Cancel");
+    form.addRow(&buttonBox);
+
+    QObject::connect(&buttonBox, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+    QObject::connect(&buttonBox, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
+
+    if (dialog.exec() == QDialog::Accepted) {
+        QString studentId = studentNameComboBox->currentData().toString();
+        QString paymentDate = paymentDateEdit->date().toString("yyyy-MM-dd");
+        double amount = amountEdit->text().toDouble();
+        QString feeType = feeTypeEdit->text();
+        QString remark = remarkEdit->text();
+
+        // Prepare SQL query
+        QSqlQuery query;
+        query.prepare("INSERT INTO financialRecords (student_id, payment_date, amount, payment_type, notes) "
+                      "VALUES (:student_id, :payment_date, :amount, :payment_type, :notes)");
+        query.bindValue(":student_id", studentId);
+        query.bindValue(":payment_date", paymentDate);
+        query.bindValue(":amount", amount);
+        query.bindValue(":payment_type", feeType);
+        query.bindValue(":notes", remark);
+
+        // Execute SQL query
+        if (query.exec()) {
+            qDebug() << "Record added successfully!";
+            loadFinancialRecords(); // Refresh the table
+        } else {
+            qDebug() << "Failed to add record: " << query.lastError().text();
+        }
+    }
+}
+
