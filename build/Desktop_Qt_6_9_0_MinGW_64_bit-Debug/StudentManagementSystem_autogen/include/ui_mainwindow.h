@@ -53,7 +53,10 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(986, 528);
+        MainWindow->resize(986, 586);
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/icon/window.ico"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        MainWindow->setWindowIcon(icon);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         horizontalLayout = new QHBoxLayout(centralwidget);
@@ -66,9 +69,9 @@ public:
         btnStudentinfo = new QToolButton(widget);
         btnStudentinfo->setObjectName("btnStudentinfo");
         btnStudentinfo->setMinimumSize(QSize(110, 80));
-        QIcon icon;
-        icon.addFile(QString::fromUtf8("C:/Users/NGR/Desktop/book.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
-        btnStudentinfo->setIcon(icon);
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/icon/studentInfo.ico"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        btnStudentinfo->setIcon(icon1);
         btnStudentinfo->setIconSize(QSize(80, 80));
         btnStudentinfo->setCheckable(true);
         btnStudentinfo->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonTextUnderIcon);
@@ -78,9 +81,9 @@ public:
         btnSechedule = new QToolButton(widget);
         btnSechedule->setObjectName("btnSechedule");
         btnSechedule->setMinimumSize(QSize(110, 80));
-        QIcon icon1;
-        icon1.addFile(QString::fromUtf8(":/icon/sechedule1.ico"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
-        btnSechedule->setIcon(icon1);
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/icon/sechedule1.ico"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        btnSechedule->setIcon(icon2);
         btnSechedule->setIconSize(QSize(80, 80));
         btnSechedule->setCheckable(true);
         btnSechedule->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonTextUnderIcon);
@@ -90,9 +93,9 @@ public:
         btnFinance = new QToolButton(widget);
         btnFinance->setObjectName("btnFinance");
         btnFinance->setMinimumSize(QSize(110, 80));
-        QIcon icon2;
-        icon2.addFile(QString::fromUtf8(":/icon/money-box.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
-        btnFinance->setIcon(icon2);
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8(":/icon/Finance.ico"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        btnFinance->setIcon(icon3);
         btnFinance->setIconSize(QSize(80, 80));
         btnFinance->setCheckable(true);
         btnFinance->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonTextUnderIcon);
@@ -102,9 +105,9 @@ public:
         btnHonorWall = new QToolButton(widget);
         btnHonorWall->setObjectName("btnHonorWall");
         btnHonorWall->setMinimumSize(QSize(110, 80));
-        QIcon icon3;
-        icon3.addFile(QString::fromUtf8(":/icon/rewards.ico"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
-        btnHonorWall->setIcon(icon3);
+        QIcon icon4;
+        icon4.addFile(QString::fromUtf8(":/icon/Honor.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        btnHonorWall->setIcon(icon4);
         btnHonorWall->setIconSize(QSize(80, 80));
         btnHonorWall->setCheckable(true);
         btnHonorWall->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonTextUnderIcon);
@@ -114,9 +117,9 @@ public:
         btnSystemset = new QToolButton(widget);
         btnSystemset->setObjectName("btnSystemset");
         btnSystemset->setMinimumSize(QSize(110, 80));
-        QIcon icon4;
-        icon4.addFile(QString::fromUtf8(":/icon/tool.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
-        btnSystemset->setIcon(icon4);
+        QIcon icon5;
+        icon5.addFile(QString::fromUtf8(":/icon/Setting.ico"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        btnSystemset->setIcon(icon5);
         btnSystemset->setIconSize(QSize(80, 80));
         btnSystemset->setCheckable(true);
         btnSystemset->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonTextUnderIcon);

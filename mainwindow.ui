@@ -7,11 +7,15 @@
     <x>0</x>
     <y>0</y>
     <width>986</width>
-    <height>528</height>
+    <height>586</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="res.qrc">
+    <normaloff>:/icon/window.ico</normaloff>:/icon/window.ico</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
@@ -36,8 +40,8 @@
           <string>Student Info</string>
          </property>
          <property name="icon">
-          <iconset>
-           <normaloff>C:/Users/NGR/Desktop/book.png</normaloff>C:/Users/NGR/Desktop/book.png</iconset>
+          <iconset resource="res.qrc">
+           <normaloff>:/icon/studentInfo.ico</normaloff>:/icon/studentInfo.ico</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -95,7 +99,7 @@
          </property>
          <property name="icon">
           <iconset resource="res.qrc">
-           <normaloff>:/icon/money-box.png</normaloff>:/icon/money-box.png</iconset>
+           <normaloff>:/icon/Finance.ico</normaloff>:/icon/Finance.ico</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -124,7 +128,7 @@
          </property>
          <property name="icon">
           <iconset resource="res.qrc">
-           <normaloff>:/icon/rewards.ico</normaloff>:/icon/rewards.ico</iconset>
+           <normaloff>:/icon/Honor.png</normaloff>:/icon/Honor.png</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -153,7 +157,7 @@
          </property>
          <property name="icon">
           <iconset resource="res.qrc">
-           <normaloff>:/icon/tool.png</normaloff>:/icon/tool.png</iconset>
+           <normaloff>:/icon/Setting.ico</normaloff>:/icon/Setting.ico</iconset>
          </property>
          <property name="iconSize">
           <size>
