@@ -23,6 +23,11 @@
 #include <QLineEdit>
 #include <QDialogButtonBox>
 #include <QSqlError>
+#include <QPieSeries>
+#include <QPieSlice>
+#include <QLineSeries>
+#include <QDateTimeAxis>
+#include <QValueAxis>
 
 FinancialWidget::FinancialWidget(QWidget *parent)
     : QWidget(parent)
@@ -98,8 +103,8 @@ void FinancialWidget::setupUI()
     connect(addButton, &QPushButton::clicked, this, &FinancialWidget::addRecord);
     // connect(deleteButton, &QPushButton::clicked, this, &FinancialWidget::deleteRecord);
     // connect(editButton, &QPushButton::clicked, this, &FinancialWidget::editRecord);
-    // connect(studentComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
-    //         this, &FinancialWidget::loadFinancialRecords);
+    connect(studentComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, &FinancialWidget::loadFinancialRecords);
     connect(startDateEdit, &QDateEdit::dateChanged, this, &FinancialWidget::loadFinancialRecords);
     connect(endDateEdit, &QDateEdit::dateChanged, this, &FinancialWidget::loadFinancialRecords);
 }
@@ -135,8 +140,8 @@ void FinancialWidget::loadFinancialRecords()
     }
 
     tableWidget->horizontalHeader()->setDefaultAlignment(Qt::AlignCenter);
-    // updateChart(); // Update the line chart below
-    // updatePieChart(); // Update the pie chart on the right
+    updateChart(); // Update the line chart below
+    updatePieChart(); // Update the pie chart on the right
 }
 
 void FinancialWidget::populateStudentComboBox()
@@ -216,3 +221,131 @@ void FinancialWidget::addRecord()
     }
 }
 
+void FinancialWidget::updatePieChart()
+{
+    QString studentId = studentComboBox->currentData().toString();
+    QDate startDate = startDateEdit->date();
+    QDate endDate = endDateEdit->date();
+
+    QString queryStr = QString(
+                           "SELECT payment_type, SUM(amount) "
+                           "FROM financialRecords "
+                           "WHERE payment_date BETWEEN '%1' AND '%2' %3 "
+                           "GROUP BY payment_type")
+                           .arg(startDate.toString("yyyy-MM-dd"))
+                           .arg(endDate.toString("yyyy-MM-dd"))
+                           .arg(studentId!= "-1"? QString("AND student_id = '%1'").arg(studentId) : "");
+
+    QSqlQuery query(queryStr);
+
+    QPieSeries* series = new QPieSeries();
+
+    while (query.next()) {
+        QString type = query.value(0).toString();
+        qreal value = query.value(1).toDouble();
+
+        if (value > 0) {
+            //QString legendLabel = QString("%1<br>%2 Yuan").arg(type).arg(value);
+            QString legendLabel = QString("%1 %2 CNY").arg(type).arg(value);
+            QPieSlice* slice = new QPieSlice(legendLabel, value);
+            slice->setLabelVisible(false);
+            series->append(slice);
+        }
+    }
+
+    QChart* chart = new QChart();
+    chart->addSeries(series);
+    chart->setTitle(tr("Payment Type Distribution"));
+
+    // Legend settings
+    chart->legend()->setVisible(true);
+    chart->legend()->setAlignment(Qt::AlignBottom);
+    chart->legend()->setBackgroundVisible(true);
+    chart->legend()->setBrush(QBrush(Qt::white));
+    chart->legend()->setLabelColor(Qt::black);
+    chart->legend()->setContentsMargins(10, 10, 10, 10);
+
+    // Pie chart size
+    series->setPieSize(0.75);
+
+    if (pieChartView->chart()) {
+        delete pieChartView->chart();
+    }
+    pieChartView->setChart(chart);
+
+    // Force repaint
+    pieChartView->repaint();
+}
+
+
+void FinancialWidget::updateChart()
+{
+    // 1. Get and validate date range
+    QDate startDate = startDateEdit->date();
+    QDate endDate = endDateEdit->date();
+    if (startDate > endDate) {
+        std::swap(startDate, endDate);
+        startDateEdit->setDate(startDate);
+        endDateEdit->setDate(endDate);
+    }
+
+    // 2. Construct a safe SQL query
+    QString studentId = studentComboBox->currentData().toString();
+    QString queryStr = QString("SELECT DATE(payment_date) AS day, SUM(amount) AS total "
+                               "FROM financialRecords "
+                               "WHERE payment_date BETWEEN :startDate AND :endDate "
+                               "%1 GROUP BY day ORDER BY day")
+                           .arg(studentId != "-1"? "AND student_id = :studentId" : "");
+    QSqlQuery query;
+    query.prepare(queryStr);
+    query.bindValue(":startDate", startDate.toString("yyyy-MM-dd"));
+    query.bindValue(":endDate", endDate.toString("yyyy-MM-dd"));
+    if (studentId != "-1") query.bindValue(":studentId", studentId);
+    if (!query.exec()) qCritical() << "[SQL Error]" << query.lastError().text();
+
+    // 3. Process query data
+    QMap<QDate, qreal> dayData;
+    qreal maxAmount = 0;
+    while (query.next()) {
+        QDate day = QDate::fromString(query.value(0).toString(), "yyyy-MM-dd");
+        if (!day.isValid()) continue;
+        qreal amount = query.value(1).toDouble();
+        dayData[day] = amount;
+        if (amount > maxAmount) maxAmount = amount;
+    }
+
+    // 4. Create chart series
+    QLineSeries* series = new QLineSeries();
+    series->setName(QObject::tr("Sales Amount"));
+    QPen pen(Qt::blue);
+    series->setPen(pen);
+    QDate currentDate = startDate;
+    while (currentDate <= endDate) {
+        qreal value = dayData.value(currentDate, 0.0);
+        series->append(currentDate.startOfDay().toMSecsSinceEpoch(), value);
+        currentDate = currentDate.addDays(1);
+    }
+
+    // 5. Configure axes
+    QChart* chart = new QChart();
+    chart->addSeries(series);
+    QDateTimeAxis* axisX = new QDateTimeAxis();
+    axisX->setFormat("yyyy-MM-dd");
+    axisX->setTitleText(QObject::tr("Date"));
+    axisX->setRange(startDate.startOfDay(), endDate.startOfDay());
+    chart->addAxis(axisX, Qt::AlignBottom);
+    series->attachAxis(axisX);
+    QValueAxis* axisY = new QValueAxis();
+    axisY->setTitleText(QObject::tr("Amount (Yuan)"));
+    axisY->setLabelFormat("%.0f");
+    axisY->setTickInterval(10);
+    axisY->setRange(0, std::ceil(maxAmount / 10) * 10 + 10); // Add 10 Yuan buffer
+    chart->addAxis(axisY, Qt::AlignLeft);
+    series->attachAxis(axisY);
+
+    // 6. Apply chart
+    if (chartView->chart()) delete chartView->chart();
+    chartView->setChart(chart);
+    chartView->setRenderHint(QPainter::Antialiasing);
+    chart->legend()->setVisible(false);
+}
