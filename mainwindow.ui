@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>986</width>
-    <height>586</height>
+    <width>964</width>
+    <height>638</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -198,7 +198,7 @@
        </size>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>2</number>
       </property>
       <widget class="StudentInfoWidget" name="pageStudentinfo"/>
       <widget class="ScheduleWidget" name="pageSechedule"/>
@@ -241,7 +241,7 @@
   <customwidget>
    <class>FinancialWidget</class>
    <extends>QWidget</extends>
-   <header>financialwidget.h</header>
+   <header location="global">financialwidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

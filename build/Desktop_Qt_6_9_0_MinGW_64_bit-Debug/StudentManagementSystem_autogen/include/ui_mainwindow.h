@@ -21,9 +21,9 @@
 #include <QtWidgets/QToolButton>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
+#include <financialwidget.h>
 #include <schedulewidget.h>
 #include <studentinfowidget.h>
-#include "financialwidget.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -53,7 +53,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(986, 586);
+        MainWindow->resize(964, 638);
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/icon/window.ico"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
         MainWindow->setWindowIcon(icon);
@@ -164,7 +164,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(3);
+        stackedWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
