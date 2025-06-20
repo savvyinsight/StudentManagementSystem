@@ -103,7 +103,7 @@ void FinancialWidget::setupUI()
 
     // Connections
     connect(addButton, &QPushButton::clicked, this, &FinancialWidget::addRecord);
-    // connect(deleteButton, &QPushButton::clicked, this, &FinancialWidget::deleteRecord);
+    connect(deleteButton, &QPushButton::clicked, this, &FinancialWidget::deleteRecord);
     connect(editButton, &QPushButton::clicked, this, &FinancialWidget::editRecord);
     connect(studentComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &FinancialWidget::loadFinancialRecords);
@@ -420,3 +420,46 @@ void FinancialWidget::editRecord()
         }
     }
 }
+
+void FinancialWidget::deleteRecord()
+{
+    int currentRow = tableWidget->currentRow();
+    if (currentRow < 0) {
+        QMessageBox::warning(this, QObject::tr("Warning"), QObject::tr("Please select the record to delete!"));
+        return;
+    }
+
+    // Get the value of the ID column
+    int id = tableWidget->item(currentRow, 0)->text().toInt(); // The ID column is the first column
+
+    // Confirm the deletion operation
+    QMessageBox confirmBox(this);
+    confirmBox.setWindowTitle(QObject::tr("Confirm Deletion"));
+    confirmBox.setText(QObject::tr("Are you sure you want to delete this record?"));
+
+    // Set buttons in English (for internationalization, can be translated later)
+    QPushButton* yesButton = confirmBox.addButton(QObject::tr("Confirm"), QMessageBox::YesRole);
+    QPushButton* noButton = confirmBox.addButton(QObject::tr("Cancel"), QMessageBox::NoRole);
+
+    // Set the default button
+    confirmBox.setDefaultButton(noButton);
+
+    // Display the dialog and wait for user's choice
+    confirmBox.exec();
+
+    if (confirmBox.clickedButton() == yesButton) {
+        // User clicked "Confirm"
+        QSqlQuery query;
+        query.prepare("DELETE FROM financialRecords WHERE id = :id");
+        query.bindValue(":id", id);
+
+        if (query.exec()) {
+            qDebug() << QObject::tr("Record deleted successfully!");
+            loadFinancialRecords(); // Refresh the table
+        } else {
+            qDebug() << QObject::tr("Failed to delete record: ") << query.lastError().text();
+            QMessageBox::warning(this, QObject::tr("Error"), QObject::tr("Failed to delete record!"));
+        }
+    }
+}
+
