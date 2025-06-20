@@ -28,6 +28,8 @@
 #include <QLineSeries>
 #include <QDateTimeAxis>
 #include <QValueAxis>
+#include <QMessageBox>
+
 
 FinancialWidget::FinancialWidget(QWidget *parent)
     : QWidget(parent)
@@ -102,7 +104,7 @@ void FinancialWidget::setupUI()
     // Connections
     connect(addButton, &QPushButton::clicked, this, &FinancialWidget::addRecord);
     // connect(deleteButton, &QPushButton::clicked, this, &FinancialWidget::deleteRecord);
-    // connect(editButton, &QPushButton::clicked, this, &FinancialWidget::editRecord);
+    connect(editButton, &QPushButton::clicked, this, &FinancialWidget::editRecord);
     connect(studentComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &FinancialWidget::loadFinancialRecords);
     connect(startDateEdit, &QDateEdit::dateChanged, this, &FinancialWidget::loadFinancialRecords);
@@ -348,4 +350,73 @@ void FinancialWidget::updateChart()
     chartView->setChart(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
     chart->legend()->setVisible(false);
+}
+
+void FinancialWidget::editRecord()
+{
+    int currentRow = tableWidget->currentRow();
+    if (currentRow < 0) {
+        QMessageBox::warning(this, QObject::tr("Warning"), QObject::tr("Please select the record to edit!"));
+        return;
+    }
+    // Get data of the current row
+    QString id = tableWidget->item(currentRow, 0)->text(); // ID is of string type
+    QString studentName = tableWidget->item(currentRow, 1)->text(); // Student name
+    QString paymentDate = tableWidget->item(currentRow, 2)->text();
+    QString amount = tableWidget->item(currentRow, 3)->text();
+    QString feeType = tableWidget->item(currentRow, 4)->text();
+    QString remark = tableWidget->item(currentRow, 5)->text();
+    QDialog dialog(this);
+    dialog.setWindowTitle(QObject::tr("Edit Payment Record"));
+    QFormLayout form(&dialog);
+    // Student name dropdown menu
+    QComboBox* studentNameComboBox = new QComboBox(&dialog);
+    QSqlQuery query("SELECT id, name FROM studentInfo");
+    while (query.next()) {
+        QString id = query.value(0).toString(); // id is of string type
+        QString name = query.value(1).toString();
+        studentNameComboBox->addItem(name, QVariant(id));
+    }
+    studentNameComboBox->setCurrentText(studentName); // Set the current student name
+    QLineEdit* paymentDateEdit = new QLineEdit(paymentDate, &dialog);
+    QLineEdit* amountEdit = new QLineEdit(amount, &dialog);
+    QLineEdit* feeTypeEdit = new QLineEdit(feeType, &dialog);
+    QLineEdit* remarkEdit = new QLineEdit(remark, &dialog);
+
+    form.addRow(QObject::tr("Student Name:"), studentNameComboBox);
+    form.addRow(QObject::tr("Payment Date:"), paymentDateEdit);
+    form.addRow(QObject::tr("Amount:"), amountEdit);
+    form.addRow(QObject::tr("Payment Type:"), feeTypeEdit);
+    form.addRow(QObject::tr("Remarks:"), remarkEdit);
+    QDialogButtonBox buttonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, Qt::Horizontal, &dialog);
+    buttonBox.button(QDialogButtonBox::Ok)->setText(QObject::tr("Confirm"));
+    buttonBox.button(QDialogButtonBox::Cancel)->setText(QObject::tr("Cancel"));
+    form.addRow(&buttonBox);
+
+    QObject::connect(&buttonBox, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+    QObject::connect(&buttonBox, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
+    if (dialog.exec() == QDialog::Accepted) {
+        QString studentId = studentNameComboBox->currentData().toString(); // studentId is of string type
+        QString paymentDate = paymentDateEdit->text();
+        double amount = amountEdit->text().toDouble();
+        QString feeType = feeTypeEdit->text();
+        QString remark = remarkEdit->text();
+        // Prepare SQL query
+        QSqlQuery query;
+        query.prepare("UPDATE financialRecords SET student_id = :student_id, payment_date = :payment_date, "
+                      "amount = :amount, payment_type = :payment_type, notes = :notes WHERE id = :id");
+        query.bindValue(":student_id", studentId); // studentId is of string type
+        query.bindValue(":payment_date", paymentDate);
+        query.bindValue(":amount", amount);
+        query.bindValue(":payment_type", feeType);
+        query.bindValue(":notes", remark);
+        query.bindValue(":id", id);
+        // Execute SQL query
+        if (query.exec()) {
+            qDebug() << QObject::tr("Record edited successfully!");
+            loadFinancialRecords(); // Refresh the table
+        } else {
+            qDebug() << QObject::tr("Failed to edit record: ") << query.lastError().text();
+        }
+    }
 }

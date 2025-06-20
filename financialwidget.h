@@ -28,6 +28,7 @@ private:
     void addRecord();
     void updatePieChart();
     void updateChart();
+    void editRecord();
     QChartView* pieChartView;
     QTableWidget* tableWidget;
     QComboBox* studentComboBox;
