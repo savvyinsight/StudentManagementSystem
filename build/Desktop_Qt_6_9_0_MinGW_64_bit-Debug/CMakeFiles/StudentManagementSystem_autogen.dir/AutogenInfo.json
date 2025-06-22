@@ -450,6 +450,12 @@
 			null
 		],
 		[
+			"D:/project/QTProject/StudentManagementSystem/honorwallwidget.h",
+			"MU",
+			"EWIEGA46WW/moc_honorwallwidget.cpp",
+			null
+		],
+		[
 			"D:/project/QTProject/StudentManagementSystem/mainwindow.h",
 			"MU",
 			"EWIEGA46WW/moc_mainwindow.cpp",
@@ -561,6 +567,11 @@
 		],
 		[
 			"D:/project/QTProject/StudentManagementSystem/financialwidget.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/project/QTProject/StudentManagementSystem/honorwallwidget.cpp",
 			"MU",
 			null
 		],

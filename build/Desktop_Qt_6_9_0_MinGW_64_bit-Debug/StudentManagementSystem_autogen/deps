@@ -775,6 +775,8 @@ StudentManagementSystem_autogen/timestamp: \
 	D:/project/QTProject/StudentManagementSystem/databasemanager.h \
 	D:/project/QTProject/StudentManagementSystem/financialwidget.cpp \
 	D:/project/QTProject/StudentManagementSystem/financialwidget.h \
+	D:/project/QTProject/StudentManagementSystem/honorwallwidget.cpp \
+	D:/project/QTProject/StudentManagementSystem/honorwallwidget.h \
 	D:/project/QTProject/StudentManagementSystem/main.cpp \
 	D:/project/QTProject/StudentManagementSystem/mainwindow.cpp \
 	D:/project/QTProject/StudentManagementSystem/mainwindow.h \
@@ -785,6 +787,7 @@ StudentManagementSystem_autogen/timestamp: \
 	D:/project/QTProject/StudentManagementSystem/studentinfowidget.h \
 	D:/project/QTProject/StudentManagementSystem/tabledelegates.h \
 	D:/project/QTProject/StudentManagementSystem/financialwidget.ui \
+	D:/project/QTProject/StudentManagementSystem/honorwallwidget.ui \
 	D:/project/QTProject/StudentManagementSystem/mainwindow.ui \
 	D:/project/QTProject/StudentManagementSystem/schedulewidget.ui \
 	D:/project/QTProject/StudentManagementSystem/studentinfowidget.ui \

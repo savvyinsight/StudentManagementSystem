@@ -14,7 +14,6 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QStatusBar>
@@ -22,6 +21,7 @@
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 #include <financialwidget.h>
+#include <honorwallwidget.h>
 #include <schedulewidget.h>
 #include <studentinfowidget.h>
 
@@ -44,9 +44,8 @@ public:
     StudentInfoWidget *pageStudentinfo;
     ScheduleWidget *pageSechedule;
     FinancialWidget *pageFinance;
-    QWidget *pageHonor;
+    HonorWallWidget *pageHonor;
     QWidget *pageSystemsetting;
-    QPushButton *pushButton_5;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -145,14 +144,11 @@ public:
         pageFinance = new FinancialWidget();
         pageFinance->setObjectName("pageFinance");
         stackedWidget->addWidget(pageFinance);
-        pageHonor = new QWidget();
+        pageHonor = new HonorWallWidget();
         pageHonor->setObjectName("pageHonor");
         stackedWidget->addWidget(pageHonor);
         pageSystemsetting = new QWidget();
         pageSystemsetting->setObjectName("pageSystemsetting");
-        pushButton_5 = new QPushButton(pageSystemsetting);
-        pushButton_5->setObjectName("pushButton_5");
-        pushButton_5->setGeometry(QRect(90, 130, 75, 24));
         stackedWidget->addWidget(pageSystemsetting);
 
         horizontalLayout->addWidget(stackedWidget);
@@ -164,7 +160,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(2);
+        stackedWidget->setCurrentIndex(4);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -178,7 +174,6 @@ public:
         btnFinance->setText(QCoreApplication::translate("MainWindow", "Finance", nullptr));
         btnHonorWall->setText(QCoreApplication::translate("MainWindow", "Honor Wall", nullptr));
         btnSystemset->setText(QCoreApplication::translate("MainWindow", "System Setting", nullptr));
-        pushButton_5->setText(QCoreApplication::translate("MainWindow", "4", nullptr));
     } // retranslateUi
 
 };
