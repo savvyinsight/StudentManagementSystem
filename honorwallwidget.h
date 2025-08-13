@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include <QLabel>
-
+#include <QPixmap>
 namespace Ui {
 class HonorWallWidget;
 }
@@ -39,6 +39,9 @@ public:
 private:
     void setupUI();
     void loadImagesFromDatabase();
+    void addImage();
+    void addImageToWall(const QString& imagePath);
+    void addImageToUI(const QPixmap& pixmap);
     QPushButton *addButton;
     QPushButton *modifyButton;
     QPushButton *deleteButton;

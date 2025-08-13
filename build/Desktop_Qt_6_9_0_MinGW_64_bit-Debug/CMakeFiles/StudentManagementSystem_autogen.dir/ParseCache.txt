@@ -2438,6 +2438,7 @@ D:/project/QTProject/StudentManagementSystem/honorwallwidget.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qversiontagging.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qxptype_traits.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qyieldcpu.h
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/QPixmap
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/qaction.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/qbitmap.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/qbrush.h

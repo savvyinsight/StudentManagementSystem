@@ -157,6 +157,7 @@ StudentManagementSystem_autogen/timestamp: \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qyieldcpu.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/QMouseEvent \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/QPainter \
+	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/QPixmap \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/QTransform \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/qaction.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/qbitmap.h \

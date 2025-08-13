@@ -62,6 +62,7 @@ public:
         horizontalLayout->setObjectName("horizontalLayout");
         widget = new QWidget(centralwidget);
         widget->setObjectName("widget");
+        widget->setEnabled(true);
         widget->setMinimumSize(QSize(80, 0));
         verticalLayout = new QVBoxLayout(widget);
         verticalLayout->setObjectName("verticalLayout");

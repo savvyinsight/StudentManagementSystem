@@ -7,7 +7,10 @@
 #include <QScrollArea>
 #include <QGridLayout>
 #include <QSqlQuery>
-
+#include <QMessageBox>
+#include <QFileDialog>
+#include <QSqlError>
+#include <QBuffer>
 HonorWallWidget::HonorWallWidget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::HonorWallWidget)
@@ -32,7 +35,7 @@ void HonorWallWidget::setupUI()
 
     // Add button
     QPushButton* addButton = new QPushButton(tr("Add Image"), this);
-    // connect(addButton, &QPushButton::clicked, this, &HonorWallWidget::addImage);
+    connect(addButton, &QPushButton::clicked, this, &HonorWallWidget::addImage);
     buttonLayout->addWidget(addButton);
 
     // Modify button
@@ -73,7 +76,7 @@ void HonorWallWidget::loadImagesFromDatabase()
     }
 
     // Load images from the database
-    QSqlQuery query("SELECT id, image_data FROM honor_wall");
+    QSqlQuery query("SELECT id, image_data FROM honorWall");
     while (query.next()) {
         int id = query.value(0).toInt();
         QByteArray imageData = query.value(1).toByteArray();
@@ -101,4 +104,62 @@ void HonorWallWidget::loadImagesFromDatabase()
             qWarning() << "Failed to load image data!";
         }
     }
+}
+
+void HonorWallWidget::addImage()
+{
+    // Open file dialog to select an image
+    QString imagePath = QFileDialog::getOpenFileName(this, tr("Select Image"), "", tr("Image Files (*.png *.jpg *.jpeg *.bmp)"));
+    if (!imagePath.isEmpty()) addImageToWall(imagePath);
+}
+
+void HonorWallWidget::addImageToWall(const QString& imagePath)
+{
+    // Load image
+    QPixmap pixmap(imagePath);
+    if (pixmap.isNull()) {
+        QMessageBox::warning(this, tr("Error"), tr("Failed to load image!"));
+        return;
+    }
+    // Convert image to binary data
+    QByteArray imageData;
+    QBuffer buffer(&imageData);
+    buffer.open(QIODevice::WriteOnly);
+    pixmap.save(&buffer, "PNG"); // Save as PNG format
+    // Insert image info into database
+    QSqlQuery query;
+    query.prepare("INSERT INTO honorWall (image_data, description, added_date) "
+                  "VALUES(:image_data, :description, :added_date)");
+    query.bindValue(":image_data", imageData);
+    query.bindValue(":description", tr("No description")); // Default description
+    query.bindValue(":added_date", QDate::currentDate().toString());
+    if (!query.exec()) {
+        qWarning() << tr("Failed to insert data:") << query.lastError().text();
+        return;
+    }
+    // Display the image in UI
+    addImageToUI(pixmap);
+}
+
+void HonorWallWidget::addImageToUI(const QPixmap& pixmap)
+{
+    if (pixmap.isNull()) {
+        qWarning() << tr("Invalid image!");
+        return;
+    }
+    QPixmap scaledPixmap = pixmap.scaled(imgW, imgH, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    // Create clickable QLabel to display image
+    ClickableLabel* imageLabel = new ClickableLabel(contentWidget);
+    if (!imageLabel) {
+        qWarning() << tr("Failed to create QLabel!");
+        return;
+    }
+    imageLabel->setPixmap(scaledPixmap);
+    imageLabel->setAlignment(Qt::AlignCenter);
+    imageLabel->setStyleSheet("border: 1px solid #ccc; padding: 5px;");
+    // connect(imageLabel, &ClickableLabel::clicked, this, &HonorWallWidget::onImageClicked);
+    // Dynamically add to grid layout
+    int row = gridLayout->count() / 3; // 3 images per row
+    int col = gridLayout->count() % 3;
+    gridLayout->addWidget(imageLabel, row, col);
 }
