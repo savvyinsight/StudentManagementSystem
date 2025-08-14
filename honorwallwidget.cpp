@@ -45,7 +45,7 @@ void HonorWallWidget::setupUI()
 
     // Delete button
     QPushButton* deleteButton = new QPushButton(tr("Delete Image"), this);
-    // connect(deleteButton, &QPushButton::clicked, this, &HonorWallWidget::deleteImage);
+    connect(deleteButton, &QPushButton::clicked, this, &HonorWallWidget::deleteImage);
     buttonLayout->addWidget(deleteButton);
 
     mainLayout->addLayout(buttonLayout);
@@ -94,7 +94,7 @@ void HonorWallWidget::loadImagesFromDatabase()
             imageLabel->setStyleSheet("border: 1px solid #ccc; padding: 5px;");
             imageLabel->setProperty("id", id); // Set the id property
 
-            // connect(imageLabel, &ClickableLabel::clicked, this, &HonorWallWidget::onImageClicked);
+            connect(imageLabel, &ClickableLabel::clicked, this, &HonorWallWidget::onImageClicked);
 
             // Dynamically add to the grid layout
             int row = gridLayout->count() / 3; // 3 images per row
@@ -157,9 +157,72 @@ void HonorWallWidget::addImageToUI(const QPixmap& pixmap)
     imageLabel->setPixmap(scaledPixmap);
     imageLabel->setAlignment(Qt::AlignCenter);
     imageLabel->setStyleSheet("border: 1px solid #ccc; padding: 5px;");
-    // connect(imageLabel, &ClickableLabel::clicked, this, &HonorWallWidget::onImageClicked);
+    connect(imageLabel, &ClickableLabel::clicked, this, &HonorWallWidget::onImageClicked);
     // Dynamically add to grid layout
     int row = gridLayout->count() / 3; // 3 images per row
     int col = gridLayout->count() % 3;
     gridLayout->addWidget(imageLabel, row, col);
+}
+
+void HonorWallWidget::onImageClicked()
+{
+    if (selectedLabel) { // Clear previous selection style
+        selectedLabel->setStyleSheet("border: 1px solid #ccc; padding: 5px;");
+    }
+
+    selectedLabel = qobject_cast<ClickableLabel*>(sender());
+    if (selectedLabel) { // Update selected image style
+        selectedLabel->setStyleSheet("border: 2px solid red; padding: 5px;");
+    }
+}
+
+
+void HonorWallWidget::deleteImage()
+{
+    if (!selectedLabel) {
+        QMessageBox::warning(this,
+                             tr("Error"),
+                             tr("Please select an image first!"));
+        return;
+    }
+
+    // Confirm deletion
+    if (QMessageBox::question(this,
+                              tr("Confirm Deletion"),
+                              tr("Are you sure you want to delete this image?"))
+        != QMessageBox::Yes) {
+        return;
+    }
+
+    // Get database ID of selected image
+    int id = selectedLabel->property("id").toInt();
+
+    // Delete record from database
+    QSqlQuery query;
+    query.prepare("DELETE FROM honorWall WHERE id = :id");
+    query.bindValue(":id", id);
+    if (!query.exec()) {
+        qWarning() << tr("Failed to delete data:") << query.lastError().text();
+        return;
+    }
+
+    // Remove image from UI
+    gridLayout->removeWidget(selectedLabel);
+    delete selectedLabel;
+    selectedLabel = nullptr;
+    reorderImages(); // Reorder remaining images
+}
+
+void HonorWallWidget::reorderImages()
+{
+    // Clear all items from the layout
+    QLayoutItem* item;
+    while ((item = gridLayout->takeAt(0)) != nullptr) {
+        if (item->widget()) {
+            item->widget()->setParent(nullptr); // Remove widget
+        }
+        delete item; // Delete layout item
+    }
+
+    loadImagesFromDatabase(); // Reload images
 }

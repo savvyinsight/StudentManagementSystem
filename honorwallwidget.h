@@ -42,6 +42,9 @@ private:
     void addImage();
     void addImageToWall(const QString& imagePath);
     void addImageToUI(const QPixmap& pixmap);
+    void onImageClicked();
+    void deleteImage();
+    void reorderImages();
     QPushButton *addButton;
     QPushButton *modifyButton;
     QPushButton *deleteButton;
@@ -49,6 +52,7 @@ private:
     QWidget *contentWidget;
     QGridLayout *gridLayout;
     Ui::HonorWallWidget *ui;
+    ClickableLabel *selectedLabel;
 };
 
 #endif // HONORWALLWIDGET_H
