@@ -45,6 +45,7 @@ private:
     void onImageClicked();
     void deleteImage();
     void reorderImages();
+    void modifyImage();
     QPushButton *addButton;
     QPushButton *modifyButton;
     QPushButton *deleteButton;

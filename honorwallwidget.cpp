@@ -40,7 +40,7 @@ void HonorWallWidget::setupUI()
 
     // Modify button
     QPushButton* modifyButton = new QPushButton(tr("Modify Image"), this);
-    // connect(modifyButton, &QPushButton::clicked, this, &HonorWallWidget::modifyImage);
+    connect(modifyButton, &QPushButton::clicked, this, &HonorWallWidget::modifyImage);
     buttonLayout->addWidget(modifyButton);
 
     // Delete button
@@ -225,4 +225,59 @@ void HonorWallWidget::reorderImages()
     }
 
     loadImagesFromDatabase(); // Reload images
+}
+
+void HonorWallWidget::modifyImage(){
+    // Check if an image is selected
+    if (!selectedLabel) {
+        QMessageBox::warning(this,
+                             tr("Error"),
+                             tr("Please select an image first!"));
+        return;
+    }
+
+    // Open file dialog to select new image
+    QString imagePath = QFileDialog::getOpenFileName(
+        this,
+        tr("Select Image"),
+        "",
+        tr("Image Files (*.png *.jpg *.jpeg *.bmp)")
+        );
+
+    if (imagePath.isEmpty()) return;
+
+    // Load new image
+    QPixmap pixmap(imagePath);
+    if (pixmap.isNull()) {
+        QMessageBox::warning(this,
+                             tr("Error"),
+                             tr("Failed to load image!"));
+        return;
+    }
+
+    // Convert image to binary data
+    QByteArray imageData;
+    QBuffer buffer(&imageData);
+    buffer.open(QIODevice::WriteOnly);
+    pixmap.save(&buffer, "PNG"); // Save as PNG format
+
+    // Get database ID of selected image
+    int id = selectedLabel->property("id").toInt();
+
+    // Update database
+    QSqlQuery query;
+    query.prepare("UPDATE honorWall SET image_data = :image_data WHERE id = :id");
+    query.bindValue(":image_data", imageData);
+    query.bindValue(":id", id);
+
+    if (!query.exec()) {
+        qWarning() << tr("Failed to update data:") << query.lastError().text();
+        return;
+    }
+
+    // Update image in UI
+    QPixmap scaledPixmap = pixmap.scaled(imgW, imgH,
+                                         Qt::KeepAspectRatio,
+                                         Qt::SmoothTransformation);
+    selectedLabel->setPixmap(scaledPixmap);
 }
