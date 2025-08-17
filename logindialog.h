@@ -21,6 +21,7 @@ private:
 
     void loginDialogFunc();
     void checkAndCreateInitialUser();
+    QString hashPassword(const QString& password);
     QLineEdit* usernameLineEdit;
     QLineEdit* passwordLineEdit;
     QPushButton*loginButton;

@@ -5,11 +5,9 @@
 #include <QHBoxLayout>
 #include <QLineEdit>
 #include <QPushButton>
-#include <QMessageBox>
-#include <QSettings>
-#include <QIcon>
 #include <QSqlQuery>
 #include <QSqlError>
+#include <QCryptographicHash>
 LoginDialog::LoginDialog(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::LoginDialog)
@@ -34,10 +32,10 @@ void LoginDialog::checkAndCreateInitialUser()
 
     if (query.next() && query.value(0).toInt() == 0) {
         // Table is empty, create initial user
-        // QString hashedInitialPassword = hashPassword(initialPassword);
-        // query.prepare("INSERT INTO users (username, password) VALUES(:username, :password)");
-        // query.bindValue(":username", initialUsername);
-        // query.bindValue(":password", hashedInitialPassword);
+        QString hashedInitialPassword = hashPassword(initialPassword);
+        query.prepare("INSERT INTO users (username, password) VALUES(:username, :password)");
+        query.bindValue(":username", initialUsername);
+        query.bindValue(":password", hashedInitialPassword);
 
         if (!query.exec()) {
             qWarning() << tr("Failed to create initial user:") << query.lastError().text();
@@ -85,4 +83,10 @@ void LoginDialog::loginDialogFunc()
     //     usernameLineEdit->setText(cachedUsername);
     //     passwordLineEdit->setText(cachedPassword);
     // }
+}
+
+QString LoginDialog::hashPassword(const QString& password){
+    QByteArray passwordBytes = password.toUtf8();
+    QByteArray hashBytes = QCryptographicHash::hash(passwordBytes,QCryptographicHash::Sha256);
+    return QString(hashBytes.toHex());
 }
