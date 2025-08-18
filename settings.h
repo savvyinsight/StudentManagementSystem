@@ -8,6 +8,7 @@ class Settings
 {
 public:
     static Settings& instance();
+    QSettings& getQSettings() {return settings;}
 
     // Database settings
     QString getDatabasePath() const;

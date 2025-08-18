@@ -21,6 +21,12 @@ private:
 
     void loginDialogFunc();
     void checkAndCreateInitialUser();
+    void onLoginButtonClicked();
+    bool loadCredentials(QString& username, QString& password);
+    QString encryptPassword(const QString& password);
+    QString decryptPassword(const QString& encryptedPassword);
+    bool validateUser(const QString& username, const QString& password);
+    void saveCredentials(const QString& username, const QString& password);
     QString hashPassword(const QString& password);
     QLineEdit* usernameLineEdit;
     QLineEdit* passwordLineEdit;
