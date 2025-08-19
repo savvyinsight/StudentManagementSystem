@@ -207,7 +207,7 @@
       <widget class="ScheduleWidget" name="pageSechedule"/>
       <widget class="FinancialWidget" name="pageFinance"/>
       <widget class="HonorWallWidget" name="pageHonor"/>
-      <widget class="QWidget" name="pageSystemsetting"/>
+      <widget class="SystemSetting" name="pageSystemsetting"/>
      </widget>
     </item>
    </layout>
@@ -237,6 +237,12 @@
    <class>HonorWallWidget</class>
    <extends>QWidget</extends>
    <header location="global">honorwallwidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>SystemSetting</class>
+   <extends>QWidget</extends>
+   <header location="global">systemsetting.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
