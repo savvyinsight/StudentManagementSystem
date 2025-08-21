@@ -23,7 +23,8 @@ private:
     Ui::SystemSetting *ui;
 
     void createUI();
-
+    void browseDatabasePath();
+    void loadSettings();
     QLineEdit* dbPathEdit;
     QPushButton* browseBtn;
     QLineEdit* oldPwdEdit;

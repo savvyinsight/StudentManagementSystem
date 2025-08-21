@@ -6,6 +6,8 @@
 #include <QTextEdit>
 #include <QLabel>
 #include <QGridLayout>
+#include <QFileDialog>
+#include "settings.h"
 
 SystemSetting::SystemSetting(QWidget *parent)
     : QWidget(parent)
@@ -14,6 +16,8 @@ SystemSetting::SystemSetting(QWidget *parent)
     ui->setupUi(this);
     setFixedSize(400,600);
     createUI();
+
+    loadSettings();
 }
 
 SystemSetting::~SystemSetting()
@@ -53,6 +57,20 @@ void SystemSetting::createUI(){
     mainLayout->addWidget(saveBtn,5,1,1,2);
     mainLayout->addWidget(versionInfoEdit,6,0,1,3);
     setLayout(mainLayout);
-    // connect(browseBtn,&QPushButton::clicked,this,&SystemSetting::browseDatabasePath);
+    connect(browseBtn,&QPushButton::clicked,this,&SystemSetting::browseDatabasePath);
     // connect(saveBtn,&QPushButton::clicked,this,&SystemSetting::saveSettings);
 }
+
+void SystemSetting::browseDatabasePath()
+{
+    QString path = QFileDialog::getSaveFileName(this,tr("Select Database File"),"","SQLite Databases (*.db *.sqlite)");
+    if(!path.isEmpty()) dbPathEdit->setText(path);
+}
+
+void SystemSetting::loadSettings()
+{
+    dbPathEdit->setText(Settings::instance().getDatabasePath());
+    cacheCheckBox->setChecked(Settings::instance().getCacheEnabled());
+}
+
+//TODO:UpdatePassword
