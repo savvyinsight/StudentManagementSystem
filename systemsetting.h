@@ -25,6 +25,9 @@ private:
     void createUI();
     void browseDatabasePath();
     void loadSettings();
+    void updatePassword();
+    void saveSettings();
+    bool validatePasswordChange();
     QLineEdit* dbPathEdit;
     QPushButton* browseBtn;
     QLineEdit* oldPwdEdit;

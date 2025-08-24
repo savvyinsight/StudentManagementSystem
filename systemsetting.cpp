@@ -8,6 +8,10 @@
 #include <QGridLayout>
 #include <QFileDialog>
 #include "settings.h"
+#include <QMessageBox>
+#include <QSqlQuery>
+#include <QCryptographicHash>
+#include <QSqlError>
 
 SystemSetting::SystemSetting(QWidget *parent)
     : QWidget(parent)
@@ -58,7 +62,7 @@ void SystemSetting::createUI(){
     mainLayout->addWidget(versionInfoEdit,6,0,1,3);
     setLayout(mainLayout);
     connect(browseBtn,&QPushButton::clicked,this,&SystemSetting::browseDatabasePath);
-    // connect(saveBtn,&QPushButton::clicked,this,&SystemSetting::saveSettings);
+    connect(saveBtn,&QPushButton::clicked,this,&SystemSetting::saveSettings);
 }
 
 void SystemSetting::browseDatabasePath()
@@ -73,4 +77,89 @@ void SystemSetting::loadSettings()
     cacheCheckBox->setChecked(Settings::instance().getCacheEnabled());
 }
 
-//TODO:UpdatePassword
+void SystemSetting::updatePassword()
+{
+    if (!validatePasswordChange()) return;
+
+    QString newHash = QString(QCryptographicHash::hash(
+                                  newPwdEdit->text().toUtf8(),
+                                  QCryptographicHash::Sha256
+                                  ).toHex());
+
+    QSqlQuery query;
+    query.prepare("UPDATE users SET password = ? WHERE username = ?");
+    query.addBindValue(newHash);
+    query.addBindValue(Settings::instance().getLastUser());
+
+    if (!query.exec()) {
+        QMessageBox::critical(this,
+                              tr("Error"),
+                              tr("Password update failed: %1")+query.lastError().text());
+        return;
+    }
+
+    QMessageBox::information(this,
+                             tr("Success"),
+                             tr("Password updated successfully"));
+}
+
+void SystemSetting::saveSettings()
+{
+    QString newDbPath = dbPathEdit->text();
+    Settings::instance().setDatabasePath(newDbPath);
+    Settings::instance().setCacheEnabled(cacheCheckBox->isChecked());
+
+    if (!newPwdEdit->text().isEmpty()) {
+        updatePassword();
+    }
+
+    if (newDbPath != Settings::instance().getDatabasePath()) {
+        QMessageBox::information(this,
+                                 tr("Information"),
+                                 tr("Database path changes will take effect after restart"));
+    }
+}
+
+bool SystemSetting::validatePasswordChange()
+{
+    if (newPwdEdit->text() != confirmPwdEdit->text()) {
+        QMessageBox::warning(this,
+                             tr("Error"),
+                             tr("New password and confirmation password do not match"));
+        return false;
+    }
+
+    QString currentUser = Settings::instance().getLastUser();
+    if (currentUser.isEmpty()) {
+        QMessageBox::warning(this,
+                             tr("Error"),
+                             tr("Current user not found"));
+        return false;
+    }
+
+    QSqlQuery query;
+    query.prepare("SELECT password FROM users WHERE username = ?");
+    query.addBindValue(currentUser);
+
+    if (!query.exec() || !query.next()) {
+        QMessageBox::critical(this,
+                              tr("Error"),
+                              tr("Database query failed: %1")+query.lastError().text());
+        return false;
+    }
+
+    QString storedHash = query.value(0).toString();
+    QString inputHash = QString(QCryptographicHash::hash(
+                                    oldPwdEdit->text().toUtf8(),
+                                    QCryptographicHash::Sha256
+                                    ).toHex());
+
+    if (storedHash != inputHash) {
+        QMessageBox::warning(this,
+                             tr("Error"),
+                             tr("Old password is incorrect"));
+        return false;
+    }
+
+    return true;
+}

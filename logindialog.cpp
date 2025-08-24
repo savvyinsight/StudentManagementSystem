@@ -81,9 +81,15 @@ void LoginDialog::loginDialogFunc()
 
     // Try to load cached credentials
     QString cachedUsername, cachedPassword;
-    if (loadCredentials(cachedUsername, cachedPassword)) {
-        usernameLineEdit->setText(cachedUsername);
-        passwordLineEdit->setText(cachedPassword);
+    // if (loadCredentials(cachedUsername, cachedPassword)) {
+    //     usernameLineEdit->setText(cachedUsername);
+    //     passwordLineEdit->setText(cachedPassword);
+    // }
+    if(Settings::instance().getCacheEnabled()){
+        if (loadCredentials(cachedUsername, cachedPassword)) {
+            usernameLineEdit->setText(cachedUsername);
+            passwordLineEdit->setText(cachedPassword);
+        }
     }
 }
 
