@@ -24,6 +24,7 @@
 #include <honorwallwidget.h>
 #include <schedulewidget.h>
 #include <studentinfowidget.h>
+#include <systemsetting.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -45,7 +46,7 @@ public:
     ScheduleWidget *pageSechedule;
     FinancialWidget *pageFinance;
     HonorWallWidget *pageHonor;
-    QWidget *pageSystemsetting;
+    SystemSetting *pageSystemsetting;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -148,7 +149,7 @@ public:
         pageHonor = new HonorWallWidget();
         pageHonor->setObjectName("pageHonor");
         stackedWidget->addWidget(pageHonor);
-        pageSystemsetting = new QWidget();
+        pageSystemsetting = new SystemSetting();
         pageSystemsetting->setObjectName("pageSystemsetting");
         stackedWidget->addWidget(pageSystemsetting);
 

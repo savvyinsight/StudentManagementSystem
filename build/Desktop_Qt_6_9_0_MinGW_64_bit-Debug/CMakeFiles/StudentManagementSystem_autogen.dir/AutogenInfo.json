@@ -456,6 +456,12 @@
 			null
 		],
 		[
+			"D:/project/QTProject/StudentManagementSystem/logindialog.h",
+			"MU",
+			"EWIEGA46WW/moc_logindialog.cpp",
+			null
+		],
+		[
 			"D:/project/QTProject/StudentManagementSystem/mainwindow.h",
 			"MU",
 			"EWIEGA46WW/moc_mainwindow.cpp",
@@ -468,9 +474,21 @@
 			null
 		],
 		[
+			"D:/project/QTProject/StudentManagementSystem/settings.h",
+			"MU",
+			"EWIEGA46WW/moc_settings.cpp",
+			null
+		],
+		[
 			"D:/project/QTProject/StudentManagementSystem/studentinfowidget.h",
 			"MU",
 			"EWIEGA46WW/moc_studentinfowidget.cpp",
+			null
+		],
+		[
+			"D:/project/QTProject/StudentManagementSystem/systemsetting.h",
+			"MU",
+			"EWIEGA46WW/moc_systemsetting.cpp",
 			null
 		],
 		[
@@ -575,6 +593,11 @@
 			"MU",
 			null
 		],
+		[
+			"D:/project/QTProject/StudentManagementSystem/logindialog.cpp",
+			"MU",
+			null
+		],
 		[ "D:/project/QTProject/StudentManagementSystem/main.cpp", "MU", null ],
 		[
 			"D:/project/QTProject/StudentManagementSystem/mainwindow.cpp",
@@ -587,7 +610,17 @@
 			null
 		],
 		[
+			"D:/project/QTProject/StudentManagementSystem/settings.cpp",
+			"MU",
+			null
+		],
+		[
 			"D:/project/QTProject/StudentManagementSystem/studentinfowidget.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/project/QTProject/StudentManagementSystem/systemsetting.cpp",
 			"MU",
 			null
 		]

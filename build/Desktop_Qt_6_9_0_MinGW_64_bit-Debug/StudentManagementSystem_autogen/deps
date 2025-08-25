@@ -209,6 +209,7 @@ StudentManagementSystem_autogen/timestamp: \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtSql/qtsqlglobal.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/QComboBox \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/QDateEdit \
+	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/QDialog \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/QFileDialog \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/QLabel \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/QMainWindow \
@@ -778,18 +779,26 @@ StudentManagementSystem_autogen/timestamp: \
 	D:/project/QTProject/StudentManagementSystem/financialwidget.h \
 	D:/project/QTProject/StudentManagementSystem/honorwallwidget.cpp \
 	D:/project/QTProject/StudentManagementSystem/honorwallwidget.h \
+	D:/project/QTProject/StudentManagementSystem/logindialog.cpp \
+	D:/project/QTProject/StudentManagementSystem/logindialog.h \
 	D:/project/QTProject/StudentManagementSystem/main.cpp \
 	D:/project/QTProject/StudentManagementSystem/mainwindow.cpp \
 	D:/project/QTProject/StudentManagementSystem/mainwindow.h \
 	D:/project/QTProject/StudentManagementSystem/res.qrc \
 	D:/project/QTProject/StudentManagementSystem/schedulewidget.cpp \
 	D:/project/QTProject/StudentManagementSystem/schedulewidget.h \
+	D:/project/QTProject/StudentManagementSystem/settings.cpp \
+	D:/project/QTProject/StudentManagementSystem/settings.h \
 	D:/project/QTProject/StudentManagementSystem/studentinfowidget.cpp \
 	D:/project/QTProject/StudentManagementSystem/studentinfowidget.h \
+	D:/project/QTProject/StudentManagementSystem/systemsetting.cpp \
+	D:/project/QTProject/StudentManagementSystem/systemsetting.h \
 	D:/project/QTProject/StudentManagementSystem/tabledelegates.h \
 	D:/project/QTProject/StudentManagementSystem/financialwidget.ui \
 	D:/project/QTProject/StudentManagementSystem/honorwallwidget.ui \
+	D:/project/QTProject/StudentManagementSystem/logindialog.ui \
 	D:/project/QTProject/StudentManagementSystem/mainwindow.ui \
 	D:/project/QTProject/StudentManagementSystem/schedulewidget.ui \
 	D:/project/QTProject/StudentManagementSystem/studentinfowidget.ui \
+	D:/project/QTProject/StudentManagementSystem/systemsetting.ui \
 	D:/App_Installation/Qt/Tools/CMake_64/bin/cmake.exe

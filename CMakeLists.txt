@@ -31,6 +31,9 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         financialwidget.h financialwidget.cpp financialwidget.ui
         style/modern.qss
         honorwallwidget.h honorwallwidget.cpp honorwallwidget.ui
+        settings.h settings.cpp
+        logindialog.h logindialog.cpp logindialog.ui
+        systemsetting.h systemsetting.cpp systemsetting.ui
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET StudentManagementSystem APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
