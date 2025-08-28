@@ -35,6 +35,8 @@ private:
     //use Byte Array to save on database.
     QByteArray photoData;
     Ui::StudentInfoWidget *ui;
+    // 新增：业务逻辑层指针
+    class StudentService* m_studentService;
 };
 
 #endif // STUDENTINFOWIDGET_H

@@ -2,6 +2,7 @@
 #include <QObject>
 #include "dao/StudentDAO.h"
 #include "model/Student.h"
+#include <QList>
 
 class StudentService : public QObject {
     Q_OBJECT

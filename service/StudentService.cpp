@@ -1,4 +1,6 @@
 #include "StudentService.h"
+#include "dao/StudentDAO.h"
+#include "model/Student.h"
 
 StudentService::StudentService(QObject *parent) : QObject(parent) {}
 
@@ -19,7 +21,6 @@ bool StudentService::deleteStudent(int studentId) {
     return m_studentDao.remove(studentId);
 }
 
-// 多线程/网络通信预留接口
 void StudentService::fetchStudentsAsync() {
     // TODO: 实现异步获取学生信息
 }
