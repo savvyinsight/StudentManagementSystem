@@ -5,6 +5,7 @@
 #include "EWIEGA46WW/moc_logindialog.cpp"
 #include "EWIEGA46WW/moc_mainwindow.cpp"
 #include "EWIEGA46WW/moc_schedulewidget.cpp"
+#include "EZIERFRHL2/moc_StudentService.cpp"
 #include "EWIEGA46WW/moc_studentinfowidget.cpp"
 #include "EWIEGA46WW/moc_systemsetting.cpp"
 #include "EWIEGA46WW/moc_tabledelegates.cpp"

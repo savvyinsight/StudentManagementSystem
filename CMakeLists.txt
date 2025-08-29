@@ -17,6 +17,9 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
+        service/StudentService.h service/StudentService.cpp
+        dao/StudentDAO.h dao/StudentDAO.cpp
+        model/Student.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

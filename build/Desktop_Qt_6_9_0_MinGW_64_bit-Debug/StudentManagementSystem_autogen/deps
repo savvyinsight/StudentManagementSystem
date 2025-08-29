@@ -6,6 +6,7 @@ StudentManagementSystem_autogen/timestamp: \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/QRect \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/QSize \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/QSizeF \
+	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/QString \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/q17memory.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/q20functional.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/q20iterator.h \
@@ -773,6 +774,8 @@ StudentManagementSystem_autogen/timestamp: \
 	D:/project/QTProject/StudentManagementSystem/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/CMakeFiles/3.30.5/CMakeRCCompiler.cmake \
 	D:/project/QTProject/StudentManagementSystem/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/CMakeFiles/3.30.5/CMakeSystem.cmake \
 	D:/project/QTProject/StudentManagementSystem/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/StudentManagementSystem_autogen/moc_predefs.h \
+	D:/project/QTProject/StudentManagementSystem/dao/StudentDAO.cpp \
+	D:/project/QTProject/StudentManagementSystem/dao/StudentDAO.h \
 	D:/project/QTProject/StudentManagementSystem/databasemanager.cpp \
 	D:/project/QTProject/StudentManagementSystem/databasemanager.h \
 	D:/project/QTProject/StudentManagementSystem/financialwidget.cpp \
@@ -784,9 +787,12 @@ StudentManagementSystem_autogen/timestamp: \
 	D:/project/QTProject/StudentManagementSystem/main.cpp \
 	D:/project/QTProject/StudentManagementSystem/mainwindow.cpp \
 	D:/project/QTProject/StudentManagementSystem/mainwindow.h \
+	D:/project/QTProject/StudentManagementSystem/model/Student.h \
 	D:/project/QTProject/StudentManagementSystem/res.qrc \
 	D:/project/QTProject/StudentManagementSystem/schedulewidget.cpp \
 	D:/project/QTProject/StudentManagementSystem/schedulewidget.h \
+	D:/project/QTProject/StudentManagementSystem/service/StudentService.cpp \
+	D:/project/QTProject/StudentManagementSystem/service/StudentService.h \
 	D:/project/QTProject/StudentManagementSystem/settings.cpp \
 	D:/project/QTProject/StudentManagementSystem/settings.h \
 	D:/project/QTProject/StudentManagementSystem/studentinfowidget.cpp \

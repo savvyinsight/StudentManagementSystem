@@ -438,6 +438,12 @@
 	"HEADERS" : 
 	[
 		[
+			"D:/project/QTProject/StudentManagementSystem/dao/StudentDAO.h",
+			"MU",
+			"7LSL2MAGVG/moc_StudentDAO.cpp",
+			null
+		],
+		[
 			"D:/project/QTProject/StudentManagementSystem/databasemanager.h",
 			"MU",
 			"EWIEGA46WW/moc_databasemanager.cpp",
@@ -468,9 +474,21 @@
 			null
 		],
 		[
+			"D:/project/QTProject/StudentManagementSystem/model/Student.h",
+			"MU",
+			"NLOY5YBGEN/moc_Student.cpp",
+			null
+		],
+		[
 			"D:/project/QTProject/StudentManagementSystem/schedulewidget.h",
 			"MU",
 			"EWIEGA46WW/moc_schedulewidget.cpp",
+			null
+		],
+		[
+			"D:/project/QTProject/StudentManagementSystem/service/StudentService.h",
+			"MU",
+			"EZIERFRHL2/moc_StudentService.cpp",
 			null
 		],
 		[
@@ -579,6 +597,11 @@
 	"SOURCES" : 
 	[
 		[
+			"D:/project/QTProject/StudentManagementSystem/dao/StudentDAO.cpp",
+			"MU",
+			null
+		],
+		[
 			"D:/project/QTProject/StudentManagementSystem/databasemanager.cpp",
 			"MU",
 			null
@@ -606,6 +629,11 @@
 		],
 		[
 			"D:/project/QTProject/StudentManagementSystem/schedulewidget.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/project/QTProject/StudentManagementSystem/service/StudentService.cpp",
 			"MU",
 			null
 		],
