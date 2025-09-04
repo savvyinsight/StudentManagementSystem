@@ -6462,6 +6462,30 @@
 			"value" : "D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6Charts"
 		},
 		{
+			"name" : "Qt6ConcurrentPrivate_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for Qt6ConcurrentPrivate."
+				}
+			],
+			"type" : "PATH",
+			"value" : "D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6ConcurrentPrivate"
+		},
+		{
+			"name" : "Qt6Concurrent_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for Qt6Concurrent."
+				}
+			],
+			"type" : "PATH",
+			"value" : "D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6Concurrent"
+		},
+		{
 			"name" : "Qt6CorePrivate_DIR",
 			"properties" : 
 			[

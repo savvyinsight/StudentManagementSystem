@@ -319,6 +319,12 @@ Qt6ChartsPrivate_DIR:PATH=D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6Cha
 //The directory containing a CMake configuration file for Qt6Charts.
 Qt6Charts_DIR:PATH=D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6Charts
 
+//The directory containing a CMake configuration file for Qt6ConcurrentPrivate.
+Qt6ConcurrentPrivate_DIR:PATH=D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6ConcurrentPrivate
+
+//The directory containing a CMake configuration file for Qt6Concurrent.
+Qt6Concurrent_DIR:PATH=D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6Concurrent
+
 //The directory containing a CMake configuration file for Qt6CorePrivate.
 Qt6CorePrivate_DIR:PATH=D:/App_Installation/Qt/6.9.0/mingw_64/lib/cmake/Qt6CorePrivate
 
