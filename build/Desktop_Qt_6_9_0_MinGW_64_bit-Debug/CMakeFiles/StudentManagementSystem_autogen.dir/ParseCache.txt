@@ -1466,6 +1466,7 @@ D:/project/QTProject/StudentManagementSystem/logindialog.h
  mdp:D:/project/QTProject/StudentManagementSystem/logindialog.h
 D:/project/QTProject/StudentManagementSystem/systemsetting.h
  mmc:Q_OBJECT
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/QTranslator
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/q17memory.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/q20functional.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/q20iterator.h
@@ -1473,6 +1474,7 @@ D:/project/QTProject/StudentManagementSystem/systemsetting.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/q20type_traits.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/q20utility.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/q23utility.h
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qabstractitemmodel.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qalgorithms.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qanystringview.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qarraydata.h
@@ -1519,6 +1521,7 @@ D:/project/QTProject/StudentManagementSystem/systemsetting.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qlatin1stringview.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qline.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qlist.h
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qlocale.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qlogging.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qmalloc.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qmap.h
@@ -1539,6 +1542,7 @@ D:/project/QTProject/StudentManagementSystem/systemsetting.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qprocessordetection.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qrect.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qrefcount.h
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qregularexpression.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qscopedpointer.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qscopeguard.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qset.h
@@ -1578,6 +1582,7 @@ D:/project/QTProject/StudentManagementSystem/systemsetting.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qtmetamacros.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qtnoop.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qtpreprocessorsupport.h
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qtranslator.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qtresource.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qttranslation.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qttypetraits.h
@@ -1585,6 +1590,7 @@ D:/project/QTProject/StudentManagementSystem/systemsetting.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qtversionchecks.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qtypeinfo.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qtypes.h
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qurl.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qutf8stringview.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qvariant.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qvarlengtharray.h
@@ -1605,20 +1611,53 @@ D:/project/QTProject/StudentManagementSystem/systemsetting.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/qkeysequence.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/qpaintdevice.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/qpalette.h
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/qpen.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/qpixelformat.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/qpixmap.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/qpolygon.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/qregion.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/qrgb.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/qrgba64.h
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/qtextcursor.h
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/qtextdocument.h
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/qtextformat.h
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/qtextoption.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/qtgui-config.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/qtguiexports.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/qtguiglobal.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/qtransform.h
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/qvalidator.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/qwindowdefs.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/qwindowdefs_win.h
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/QCheckBox
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/QComboBox
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/QGridLayout
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/QLineEdit
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/QPushButton
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/QTextEdit
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/QWidget
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qabstractbutton.h
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qabstractitemdelegate.h
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qabstractscrollarea.h
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qabstractslider.h
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qabstractspinbox.h
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qboxlayout.h
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qcheckbox.h
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qcombobox.h
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qframe.h
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qgridlayout.h
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qlayout.h
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qlayoutitem.h
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qlineedit.h
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qpushbutton.h
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qrubberband.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qsizepolicy.h
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qslider.h
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qstyle.h
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qstyleoption.h
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qtabbar.h
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qtabwidget.h
+ mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qtextedit.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qtwidgets-config.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qtwidgetsexports.h
  mdp:D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qtwidgetsglobal.h

@@ -7,6 +7,7 @@ StudentManagementSystem_autogen/timestamp: \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/QSize \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/QSizeF \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/QString \
+	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/QTranslator \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/q17memory.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/q20functional.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/q20iterator.h \
@@ -142,6 +143,7 @@ StudentManagementSystem_autogen/timestamp: \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qtmetamacros.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qtnoop.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qtpreprocessorsupport.h \
+	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qtranslator.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qtresource.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qttranslation.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtCore/qttypetraits.h \
@@ -192,7 +194,9 @@ StudentManagementSystem_autogen/timestamp: \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/qrgba64.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/qscreen.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/qscreen_platform.h \
+	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/qtextcursor.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/qtextdocument.h \
+	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/qtextformat.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/qtextoption.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/qtgui-config.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtGui/qtguiexports.h \
@@ -208,24 +212,38 @@ StudentManagementSystem_autogen/timestamp: \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtSql/qtsql-config.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtSql/qtsqlexports.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtSql/qtsqlglobal.h \
+	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/QCheckBox \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/QComboBox \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/QDateEdit \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/QDialog \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/QFileDialog \
+	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/QGridLayout \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/QLabel \
+	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/QLineEdit \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/QMainWindow \
+	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/QPushButton \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/QStyledItemDelegate \
+	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/QTextEdit \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/QWidget \
+	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qabstractbutton.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
+	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qabstractslider.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qabstractspinbox.h \
+	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qboxlayout.h \
+	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qcheckbox.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qcombobox.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qdatetimeedit.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qdialog.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qfiledialog.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qframe.h \
+	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qgridlayout.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qlabel.h \
+	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qlayout.h \
+	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qlayoutitem.h \
+	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qlineedit.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qmainwindow.h \
+	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qpushbutton.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qrubberband.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qsizepolicy.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qslider.h \
@@ -234,6 +252,7 @@ StudentManagementSystem_autogen/timestamp: \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qstyleoption.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qtabbar.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qtabwidget.h \
+	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qtextedit.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qtwidgets-config.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qtwidgetsexports.h \
 	D:/App_Installation/Qt/6.9.0/mingw_64/include/QtWidgets/qtwidgetsglobal.h \

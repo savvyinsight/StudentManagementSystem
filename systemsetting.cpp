@@ -31,6 +31,7 @@ SystemSetting::~SystemSetting()
 
 
 void SystemSetting::createUI(){
+    // Create UI controls
     dbPathEdit = new QLineEdit(this);
     browseBtn = new QPushButton(tr("Browse..."),this);
     oldPwdEdit = new QLineEdit(this);
@@ -39,30 +40,77 @@ void SystemSetting::createUI(){
     cacheCheckBox = new QCheckBox(tr("Remember Login Info"),this);
     saveBtn = new QPushButton(tr("Save"),this);
     versionInfoEdit = new QTextEdit(this);
+    languageCombo = new QComboBox(this);
+    themeCombo = new QComboBox(this);
 
+    // Set password fields to echo mode
     oldPwdEdit->setEchoMode(QLineEdit::Password);
     newPwdEdit->setEchoMode(QLineEdit::Password);
     confirmPwdEdit->setEchoMode(QLineEdit::Password);
 
-    versionInfoEdit->setPlainText(tr("Student Management System 1.0\nDev Environmnt ：QTC++6.6，QtCreator12.0.2，Win10"));
+    // Set version info
+    versionInfoEdit->setPlainText(tr("Student Management System 1.0\nDev Environment: Qt6.6, QtCreator12.0.2, Win10"));
     versionInfoEdit->setReadOnly(true);
 
-    mainLayout =new QGridLayout(this);
-    mainLayout->addWidget(new QLabel(tr("DataBase Path: "),this));
-    mainLayout->addWidget(dbPathEdit,0,1);
-    mainLayout->addWidget(browseBtn,0,2);
-    mainLayout->addWidget(new QLabel(tr("Old Password: "),this),1,0);
-    mainLayout->addWidget(oldPwdEdit,1,1,1,2);
-    mainLayout->addWidget(new QLabel(tr("new Password: "),this),2,0);
-    mainLayout->addWidget(newPwdEdit,2,1,1,2);
-    mainLayout->addWidget(new QLabel(tr("Confirm Password: "),this),3,0);
-    mainLayout->addWidget(confirmPwdEdit,3,1,1,2);
-    mainLayout->addWidget(cacheCheckBox,4,0,1,3);
-    mainLayout->addWidget(saveBtn,5,1,1,2);
-    mainLayout->addWidget(versionInfoEdit,6,0,1,3);
+    // Language selection
+    languageCombo->addItem("English");
+    languageCombo->addItem(QString::fromUtf8("中文"));
+    connect(languageCombo, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &SystemSetting::onLanguageChanged);
+
+    // Theme selection
+    themeCombo->addItem(tr("Default"));
+    themeCombo->addItem(tr("Dark"));
+    connect(themeCombo, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &SystemSetting::onThemeChanged);
+
+    // Layout
+    mainLayout = new QGridLayout(this);
+    mainLayout->addWidget(new QLabel(tr("Language:"),this),0,0);
+    mainLayout->addWidget(languageCombo,0,1,1,2);
+    mainLayout->addWidget(new QLabel(tr("Theme:"),this),1,0);
+    mainLayout->addWidget(themeCombo,1,1,1,2);
+    mainLayout->addWidget(new QLabel(tr("DataBase Path:"),this),2,0);
+    mainLayout->addWidget(dbPathEdit,2,1);
+    mainLayout->addWidget(browseBtn,2,2);
+    mainLayout->addWidget(new QLabel(tr("Old Password:"),this),3,0);
+    mainLayout->addWidget(oldPwdEdit,3,1,1,2);
+    mainLayout->addWidget(new QLabel(tr("New Password:"),this),4,0);
+    mainLayout->addWidget(newPwdEdit,4,1,1,2);
+    mainLayout->addWidget(new QLabel(tr("Confirm Password:"),this),5,0);
+    mainLayout->addWidget(confirmPwdEdit,5,1,1,2);
+    mainLayout->addWidget(cacheCheckBox,6,0,1,3);
+    mainLayout->addWidget(saveBtn,7,1,1,2);
+    mainLayout->addWidget(versionInfoEdit,8,0,1,3);
     setLayout(mainLayout);
-    connect(browseBtn,&QPushButton::clicked,this,&SystemSetting::browseDatabasePath);
-    connect(saveBtn,&QPushButton::clicked,this,&SystemSetting::saveSettings);
+
+    // Connect signals
+    connect(browseBtn, &QPushButton::clicked, this, &SystemSetting::browseDatabasePath);
+    connect(saveBtn, &QPushButton::clicked, this, &SystemSetting::saveSettings);
+
+}
+    // Language change handler
+void SystemSetting::onLanguageChanged(int index) {
+    // English
+    if (index == 0) {
+        qApp->removeTranslator(&translator);
+    } else {
+        // Chinese
+        if (translator.load(QLocale("zh_CN"), "app", "_", ":/translations")) {
+            qApp->installTranslator(&translator);
+        }
+    }
+    // Emit signal or refresh UI if needed
+}
+
+// Theme change handler
+void SystemSetting::onThemeChanged(int index) {
+    QString qssFile;
+    if (index == 0) qssFile = ":/style/modern.qss";
+    else if (index == 1) qssFile = ":/style/qss.qss";
+    QFile file(qssFile);
+    if (file.open(QFile::ReadOnly)) {
+        QString style = file.readAll();
+        qApp->setStyleSheet(style);
+    }
 }
 
 void SystemSetting::browseDatabasePath()
