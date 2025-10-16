@@ -1,0 +1,51 @@
+
+# Compiled source
+bin/
+obj/
+build/
+dist/
+out/
+target/
+
+# Executables
+*.exe
+*.dll
+*.so
+*.dylib
+*.app
+
+# Dependencies
+node_modules/
+vendor/
+packages/
+*.jar
+*.war
+
+# Logs and databases
+*.log
+logs/
+*.sql
+*.sqlite
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Language specific
+*.class
+*.pyc
+__pycache__/
+*.o
+*.out
+*.egg-info/
