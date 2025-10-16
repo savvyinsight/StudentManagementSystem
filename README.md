@@ -161,6 +161,20 @@ StudentManagementSystem/
 
 *   Locate the generated executable file in the build directory and run it
 
-## 6.Contact Information
+## 6.What It's Look Like?
+
+1. Login
+
+![image-20251014164920473](assets/README/image-20251014164920473.png)
+
+2. Student Info
+
+
+
+![image-20251007152757807](assets/README/image-20251007152757807.png)
+
+![image-20251007152734556](assets/README/image-20251007152734556.png)
+
+## 7.Contact Information
 
 For issues or suggestions, please submit an Issue through the project repository or contact the developer directly.
