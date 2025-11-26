@@ -1,5 +1,9 @@
 # Student Management System
 
+<p align="center">
+<strong>Language:</strong>&nbsp; <strong>English</strong> | <a href="README_zh.md">中文</a>
+</p>
+
 ## 1. Project Overview
 
 The Student Management System is a desktop application developed based on the Qt framework, designed to provide educational institutions with convenient functions for student information management, financial record-keeping, schedule arrangement, and honor display. The system uses an SQLite database for data storage, featuring a user-friendly interface and well-structured functional modules.
